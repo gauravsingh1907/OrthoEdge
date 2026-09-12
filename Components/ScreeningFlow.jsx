@@ -1,9 +1,9 @@
 "use client"
 import { useState } from 'react'
-import PatientForm from '@/Components/PatientForm'
-import Questionnaire from '@/Components/Questionnaire'
-import GaitTest from '@/Components/GaitTest'
-import Result from '@/Components/Result'
+import PatientForm from '@/components/PatientForm'
+import Questionnaire from '@/components/Questionnaire'
+import GaitTest from '@/components/GaitTest'
+import Result from '@/components/Result'
 
 export default function ScreeningFlow() {
   const [step, setStep] = useState('patient')
