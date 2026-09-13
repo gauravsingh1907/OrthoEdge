@@ -21,22 +21,18 @@ function RiskResultCard({ scores }) {
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <div className="rounded-xl bg-gray-50 p-4">
-          <p className="text-sm text-gray-500">
-            Questionnaire Score
-          </p>
+          <p className="text-sm text-gray-500">Questionnaire Score</p>
 
           <p className="mt-1 text-2xl font-bold text-gray-900">
-            {scores.womacScore}%
+            {scores.womacScore.toFixed(2)}%
           </p>
         </div>
 
         <div className="rounded-xl bg-gray-50 p-4">
-          <p className="text-sm text-gray-500">
-            Gait Test Score
-          </p>
+          <p className="text-sm text-gray-500">Gait Test Score</p>
 
           <p className="mt-1 text-2xl font-bold text-gray-900">
-            {scores.gaitScore}%
+            {scores.gaitScore.toFixed(2)}%
           </p>
         </div>
       </div>
