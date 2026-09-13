@@ -171,7 +171,7 @@ const Questionnaire = ({ patientId, onComplete }) => {
                     },
                   }));
                 }}
-                className={`flex min-h-14 w-full items-center justify-between rounded-xl border-2 px-4 text-left transition ${
+                className={`flex min-h-14 w-full items-center cursor-pointer justify-between rounded-xl border-2 px-4 text-left transition ${
                   isSelected
                     ? "border-blue-600 bg-blue-50 text-blue-700"
                     : "border-gray-200 bg-white text-gray-700 hover:border-blue-300 hover:bg-gray-50"
@@ -180,7 +180,7 @@ const Questionnaire = ({ patientId, onComplete }) => {
                 <span className="font-medium">{option.label}</span>
 
                 <span
-                  className={`flex h-7 w-7 items-center justify-center rounded-full border text-sm font-semibold ${
+                  className={`flex h-7 w-7 items-center justify-center cursor-pointer rounded-full border text-sm font-semibold ${
                     isSelected
                       ? "border-blue-600 bg-blue-600 text-white"
                       : "border-gray-300 text-gray-500"
@@ -193,19 +193,7 @@ const Questionnaire = ({ patientId, onComplete }) => {
           })}
         </div>
 
-        {/* {selectedValue !== undefined && (
-          <div className="mt-5 rounded-xl bg-gray-50 px-4 py-3">
-            <p className="text-sm text-gray-500">Selected response</p>
 
-            <p className="mt-1 font-semibold text-gray-900">
-              {
-                answerOptions.find(
-                  (option) => option.value === selectedValue
-                )?.label
-              }
-            </p>
-          </div>
-        )} */}
 
         <div className="mt-7 flex gap-3">
           <button
@@ -214,7 +202,7 @@ const Questionnaire = ({ patientId, onComplete }) => {
             onClick={() => {
               setCurrentQuestion((prev) => prev - 1);
             }}
-            className="min-h-12 flex-1 rounded-xl border border-gray-300 px-4 font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
+            className="min-h-12 flex-1 rounded-xl border cursor-pointer border-gray-300 px-4 font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
           >
             Previous
           </button>
@@ -236,7 +224,7 @@ const Questionnaire = ({ patientId, onComplete }) => {
                 setCurrentQuestion((prev) => prev + 1);
               }
             }}
-            className="min-h-12 flex-1 rounded-xl bg-blue-600 px-4 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-300"
+            className="min-h-12 flex-1 rounded-xl bg-blue-600 px-4 font-semibold text-white cursor-pointer transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-300"
           >
             {isLastQuestion ? "Submit" : "Next"}
           </button>

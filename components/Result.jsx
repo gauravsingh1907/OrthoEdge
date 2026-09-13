@@ -138,13 +138,13 @@ return (
     <div className="mt-6 flex flex-col gap-3 sm:flex-row print:hidden">
       <button
         onClick={() => window.print()}
-        className="flex-1 rounded-xl border border-gray-300 bg-white px-5 py-3 text-center font-semibold text-gray-700 transition hover:bg-gray-50"
+        className="flex-1 rounded-xl border border-gray-300 bg-white px-5 py-3 cursor-pointer text-center font-semibold text-gray-700 transition hover:bg-gray-50"
       >
         Print report
       </button>
       <Link
         href="/"
-        className="flex-1 rounded-xl bg-blue-600 px-5 py-3 text-center font-semibold text-white transition hover:bg-blue-700"
+        className="flex-1 rounded-xl cursor-pointer bg-blue-600 px-5 py-3 text-center font-semibold text-white transition hover:bg-blue-700"
       >
         Back to home
       </Link>
