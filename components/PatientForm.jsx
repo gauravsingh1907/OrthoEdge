@@ -1,12 +1,12 @@
 "use client";
-import { createPatient } from '@/lib/db'
-import { useUser } from '@clerk/nextjs'
+import { createPatient } from "@/lib/db";
+import { useUser } from "@clerk/nextjs";
 // inside component:
 
 import { useState } from "react";
 
-export default function PatientForm({onComplete}) {
-  const { user } = useUser()
+export default function PatientForm({ onComplete }) {
+  const { user } = useUser();
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -40,29 +40,29 @@ export default function PatientForm({onComplete}) {
     formData.gender &&
     formData.weight &&
     formData.height &&
-    formData.abhaNumber.trim();
+    formData.abhaNumber.trim().length === 14;
 
-const handleSubmit = async (e) => {
-e.preventDefault()
-  try {
-    const newId = await createPatient({
-      workerId: user.id,
-      name: formData.name.trim(),
-      age: Number(formData.age),
-      gender: formData.gender,
-      weight: Number(formData.weight),
-      height: Number(formData.height),
-      bmi: Number(bmi),
-      abhaNumber: formData.abhaNumber.trim(),
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const newId = await createPatient({
+        workerId: user.id,
+        name: formData.name.trim(),
+        age: Number(formData.age),
+        gender: formData.gender,
+        weight: Number(formData.weight),
+        height: Number(formData.height),
+        bmi: Number(bmi),
+        abhaNumber: formData.abhaNumber.trim(),
+      });
 
-    console.log("Patient created:", newId);
+      console.log("Patient created:", newId);
 
-    onComplete(newId);
-  } catch (error) {
-    console.error("Failed to create patient:", error);
-  }
-}
+      onComplete(newId);
+    } catch (error) {
+      console.error("Failed to create patient:", error);
+    }
+  };
 
   return (
     <form
@@ -210,13 +210,17 @@ e.preventDefault()
             id="abhaNumber"
             name="abhaNumber"
             type="text"
+            inputMode="numeric"
+            maxLength={14}
             value={formData.abhaNumber}
-            onChange={handleChange}
-            placeholder="Enter ABHA number"
+            onChange={(e) => {
+              const digitsOnly = e.target.value.replace(/\D/g, "").slice(0, 14);
+              setFormData((prev) => ({ ...prev, abhaNumber: digitsOnly }));
+            }}
+            placeholder="14-digit ABHA number"
             className="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
           />
         </div>
-        
 
         {/* Submit */}
         <button
@@ -226,7 +230,6 @@ e.preventDefault()
         >
           Continue
         </button>
-        
       </div>
     </form>
   );
