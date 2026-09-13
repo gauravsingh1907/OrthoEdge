@@ -5,10 +5,13 @@ import { UserButton, Show } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { getAllPatients } from "@/lib/db";
+import { syncAllPatients } from "@/lib/serviceSync";
 
 export default function Home() {
   const [todayPatients, setTodayPatients] = useState([]);
   const [loadingPatients, setLoadingPatients] = useState(true);
+  const [syncing, setSyncing] = useState(false);
+  const [syncMessage, setSyncMessage] = useState("");
   const containerVariants = {
     hidden: {},
     visible: {
@@ -82,68 +85,82 @@ export default function Home() {
       minute: "2-digit",
     });
   }
+  async function handleSync() {
+    setSyncing(true);
+    setSyncMessage("");
+    try {
+      const result = await syncAllPatients();
+      setSyncMessage(`Synced ${result.successCount}/${result.total}`);
+    } catch (err) {
+      setSyncMessage("Sync failed");
+      console.error(err);
+    } finally {
+      setSyncing(false);
+      setTimeout(() => setSyncMessage(""), 4000);
+    }
+  }
 
   return (
     <main className="min-h-screen bg-radial from-blue-50 from-30% to-blue-300 text-gray-900">
       <Show when="signed-out">
-<motion.nav
-  initial="hidden"
-  animate="visible"
-  variants={{
-    visible: { transition: { staggerChildren: 0.12 } }
-  }}
-  className="border-b border-blue-100 bg-white/80 backdrop-blur-sm"
->
-  <div className="mx-auto flex max-w-8xl items-center justify-between px-4 py-4 sm:px-6">
-    <motion.div
-      variants={{
-        hidden: { opacity: 0, y: -15 },
-        visible: { opacity: 1, y: 0 }
-      }}
-    >
-      <Link href="/" className="flex items-center gap-2">
-        <img
-          src="/favicon.ico"
-          alt="OA Screening"
-          className="h-9 w-9 rounded-lg"
-        />
-        <span className="text-xl font-bold text-blue-700">
-          OrthoEdge
-        </span>
-      </Link>
-    </motion.div>
-
-    <div className="flex items-center gap-2 sm:gap-3">
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, y: -15 },
-          visible: { opacity: 1, y: 0 }
-        }}
-      >
-        <Link
-          href="/login"
-          className="rounded-xl px-3 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-100 sm:px-4"
+        <motion.nav
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: { transition: { staggerChildren: 0.12 } }
+          }}
+          className="border-b border-blue-100 bg-white/80 backdrop-blur-sm"
         >
-          Login
-        </Link>
-      </motion.div>
+          <div className="mx-auto flex max-w-8xl items-center justify-between px-4 py-4 sm:px-6">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: -15 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
+              <Link href="/" className="flex items-center gap-2">
+                <img
+                  src="/favicon.ico"
+                  alt="OA Screening"
+                  className="h-9 w-9 rounded-lg"
+                />
+                <span className="text-xl font-bold text-blue-700">
+                  OrthoEdge
+                </span>
+              </Link>
+            </motion.div>
 
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, y: -15 },
-          visible: { opacity: 1, y: 0 }
-        }}
-      >
-        <Link
-          href="/signup"
-          className="rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
-        >
-          Sign Up
-        </Link>
-      </motion.div>
-    </div>
-  </div>
-</motion.nav>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: -15 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+              >
+                <Link
+                  href="/login"
+                  className="rounded-xl px-3 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-100 sm:px-4"
+                >
+                  Login
+                </Link>
+              </motion.div>
+
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: -15 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+              >
+                <Link
+                  href="/signup"
+                  className="rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
+                >
+                  Sign Up
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+        </motion.nav>
 
         <section className="mx-auto flex min-h-[calc(100vh-73px)] max-w-6xl items-center px-4 py-12 sm:px-6">
           <div className="grid w-full gap-12 lg:grid-cols-2 lg:items-center">
@@ -221,69 +238,69 @@ export default function Home() {
             </motion.div>
 
 
-<motion.div
-  initial={{ opacity: 0, scale: 0.95, y: 20 }}
-  whileInView={{ opacity: 1, scale: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.5 }}
-  className="hidden lg:block"
->
-  <div className="rounded-3xl border bg-white p-6 shadow-sm">
-    <div className="rounded-2xl bg-blue-50 p-6">
-      <div className="mx-auto flex items-center justify-center">
-        <div >
-          <p className="text-sm text-center  font-medium text-gray-500">
-            Screening Overview
-          </p>
-          <h2 className="mt-1 text-2xl font-bold text-gray-900">
-            OA Risk Assessment
-          </h2>
-        </div>
-        
-      </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="hidden lg:block"
+            >
+              <div className="rounded-3xl border bg-white p-6 shadow-sm">
+                <div className="rounded-2xl bg-blue-50 p-6">
+                  <div className="mx-auto flex items-center justify-center">
+                    <div >
+                      <p className="text-sm text-center  font-medium text-gray-500">
+                        Screening Overview
+                      </p>
+                      <h2 className="mt-1 text-2xl font-bold text-gray-900">
+                        OA Risk Assessment
+                      </h2>
+                    </div>
 
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
-        }}
-        className="mt-6 space-y-3"
-      >
-        <motion.div
-          variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
-          className="flex items-center justify-between rounded-xl bg-white px-4 py-4"
-        >
-          <span className="font-medium text-gray-700">Questionnaire</span>
-          <span className="text-sm font-semibold text-blue-600">Symptoms</span>
-        </motion.div>
+                  </div>
 
-        <motion.div
-          variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
-          className="flex items-center justify-between rounded-xl bg-white px-4 py-4"
-        >
-          <span className="font-medium text-gray-700">Gait Analysis</span>
-          <span className="text-sm font-semibold text-blue-600">Movement</span>
-        </motion.div>
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={{
+                      visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
+                    }}
+                    className="mt-6 space-y-3"
+                  >
+                    <motion.div
+                      variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
+                      className="flex items-center justify-between rounded-xl bg-white px-4 py-4"
+                    >
+                      <span className="font-medium text-gray-700">Questionnaire</span>
+                      <span className="text-sm font-semibold text-blue-600">Symptoms</span>
+                    </motion.div>
 
-        <motion.div
-          variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
-          className="flex items-center justify-between rounded-xl border-2 border-blue-200 bg-white px-4 py-4"
-        >
-          <span className="font-semibold text-gray-900">Final Assessment</span>
-          <span className="rounded-full bg-blue-100 px-3 py-1 text-sm font-bold text-blue-700">
-            Risk Score
-          </span>
-        </motion.div>
-      </motion.div>
-    </div>
+                    <motion.div
+                      variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
+                      className="flex items-center justify-between rounded-xl bg-white px-4 py-4"
+                    >
+                      <span className="font-medium text-gray-700">Gait Analysis</span>
+                      <span className="text-sm font-semibold text-blue-600">Movement</span>
+                    </motion.div>
 
-    <p className="mt-5 text-center text-sm text-gray-500">
-      Designed for simple, accessible screening in low-resource settings.
-    </p>
-  </div>
-</motion.div>
+                    <motion.div
+                      variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
+                      className="flex items-center justify-between rounded-xl border-2 border-blue-200 bg-white px-4 py-4"
+                    >
+                      <span className="font-semibold text-gray-900">Final Assessment</span>
+                      <span className="rounded-full bg-blue-100 px-3 py-1 text-sm font-bold text-blue-700">
+                        Risk Score
+                      </span>
+                    </motion.div>
+                  </motion.div>
+                </div>
+
+                <p className="mt-5 text-center text-sm text-gray-500">
+                  Designed for simple, accessible screening in low-resource settings.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </section>
       </Show>
@@ -309,7 +326,21 @@ export default function Home() {
               </div>
             </Link>
 
-            <UserButton />
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handleSync}
+                disabled={syncing}
+                className="rounded-xl border border-gray-300 bg-white px-3 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 disabled:opacity-50"
+              >
+                {syncing ? "Syncing..." : "Sync data"}
+              </button>
+
+              {syncMessage && (
+                <span className="text-xs text-gray-500">{syncMessage}</span>
+              )}
+
+              <UserButton />
+            </div>
           </div>
         </nav>
 
