@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getAllPatients } from "@/lib/db";
+import Link from "next/link";
 
 export default function RecordsList() {
   const [records, setRecords] = useState([]);
@@ -13,7 +14,7 @@ export default function RecordsList() {
         const patients = await getAllPatients();
 
         const sortedPatients = patients.sort(
-          (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+          (a, b) => new Date(b.timestamp) - new Date(a.timestamp),
         );
 
         setRecords(sortedPatients);
@@ -107,9 +108,10 @@ export default function RecordsList() {
           const hasResult = patient.combinedScore !== null;
 
           return (
-            <div
+            <Link
               key={patient.id}
-              className="rounded-2xl border bg-white p-5 shadow-sm"
+              href={`/records/${patient.id}`}
+              className="block rounded-2xl border bg-white p-5 shadow-sm transition hover:border-blue-300 hover:shadow-md"
             >
               <div className="flex flex-col gap-4">
                 <div className="flex items-start justify-between gap-4">
@@ -126,7 +128,7 @@ export default function RecordsList() {
                   {hasResult ? (
                     <div
                       className={`shrink-0 rounded-full border px-3 py-1.5 text-sm font-semibold ${getRiskStyle(
-                        patient.combinedScore.band
+                        patient.combinedScore.band,
                       )}`}
                     >
                       {patient.combinedScore.band}
@@ -172,7 +174,7 @@ export default function RecordsList() {
                   </div>
                 )}
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

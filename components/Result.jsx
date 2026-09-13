@@ -19,6 +19,16 @@ export default function Result({ patientId }) {
         if (!patient) {
           throw new Error("Patient not found");
         }
+        if (
+          patient.womacScore === null ||
+          patient.womacScore === undefined ||
+          patient.gaitScore === null || 
+          patient.gaitScore === undefined
+        ) {
+          throw new Error(
+            "This screening is incomplete — no results available yet.",
+          );
+        }
 
         const combined = combineRisk(
           patient.womacScore.overall.score,
@@ -66,89 +76,90 @@ export default function Result({ patientId }) {
     );
   }
 
-return (
-  <div className="mx-auto w-full max-w-2xl px-4 py-6 sm:py-8">
-    <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
-
-      {/* Report header */}
-      <div className="border-b border-gray-200 bg-blue-600 px-6 py-5 text-white print:bg-white print:text-gray-900 print:border-b-2 print:border-gray-900">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-blue-100 print:text-gray-500">
-              OrthoEdge Screening Report
+  return (
+    <div className="mx-auto w-full max-w-2xl px-4 py-6 sm:py-8">
+      <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+        {/* Report header */}
+        <div className="border-b border-gray-200 bg-blue-600 px-6 py-5 text-white print:bg-white print:text-gray-900 print:border-b-2 print:border-gray-900">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-blue-100 print:text-gray-500">
+                OrthoEdge Screening Report
+              </p>
+              <h1 className="mt-1 text-xl font-bold">
+                Osteoarthritis Risk Assessment
+              </h1>
+            </div>
+            <p className="text-xs text-blue-100 print:text-gray-500">
+              {new Date(patient.timestamp).toLocaleDateString("en-IN", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+              })}
             </p>
-            <h1 className="mt-1 text-xl font-bold">
-              Osteoarthritis Risk Assessment
-            </h1>
           </div>
-          <p className="text-xs text-blue-100 print:text-gray-500">
-            {new Date(patient.timestamp).toLocaleDateString("en-IN", {
-              day: "2-digit", month: "short", year: "numeric"
-            })}
+        </div>
+
+        {/* Patient details - form-style rows */}
+        <div className="border-b border-gray-200 px-6 py-4">
+          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
+            Patient Details
+          </h2>
+          <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm sm:grid-cols-4">
+            <div>
+              <dt className="text-gray-500">Name</dt>
+              <dd className="font-semibold text-gray-900">{patient.name}</dd>
+            </div>
+            <div>
+              <dt className="text-gray-500">Age</dt>
+              <dd className="font-semibold text-gray-900">{patient.age}</dd>
+            </div>
+            <div>
+              <dt className="text-gray-500">Gender</dt>
+              <dd className="font-semibold text-gray-900">{patient.gender}</dd>
+            </div>
+            <div>
+              <dt className="text-gray-500">ABHA No.</dt>
+              <dd className="break-all font-semibold text-gray-900">
+                {patient.abhaNumber || "—"}
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        {/* Assessment section */}
+        <div className="px-6 py-5">
+          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
+            Risk Assessment
+          </h2>
+          <RiskResultCard scores={result} />
+        </div>
+
+        {/* Footer disclaimer, inside the report */}
+        <div className="border-t border-gray-200 bg-gray-50 px-6 py-3 print:bg-white">
+          <p className="text-xs text-gray-500">
+            This screening result is intended to support early risk assessment
+            and does not replace clinical diagnosis. Administered by healthcare
+            worker via OrthoEdge screening platform.
           </p>
         </div>
       </div>
 
-      {/* Patient details - form-style rows */}
-      <div className="border-b border-gray-200 px-6 py-4">
-        <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
-          Patient Details
-        </h2>
-        <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm sm:grid-cols-4">
-          <div>
-            <dt className="text-gray-500">Name</dt>
-            <dd className="font-semibold text-gray-900">{patient.name}</dd>
-          </div>
-          <div>
-            <dt className="text-gray-500">Age</dt>
-            <dd className="font-semibold text-gray-900">{patient.age}</dd>
-          </div>
-          <div>
-            <dt className="text-gray-500">Gender</dt>
-            <dd className="font-semibold text-gray-900">{patient.gender}</dd>
-          </div>
-          <div>
-            <dt className="text-gray-500">ABHA No.</dt>
-            <dd className="break-all font-semibold text-gray-900">
-              {patient.abhaNumber || "—"}
-            </dd>
-          </div>
-        </dl>
-      </div>
-
-      {/* Assessment section */}
-      <div className="px-6 py-5">
-        <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
-          Risk Assessment
-        </h2>
-        <RiskResultCard scores={result} />
-      </div>
-
-      {/* Footer disclaimer, inside the report */}
-      <div className="border-t border-gray-200 bg-gray-50 px-6 py-3 print:bg-white">
-        <p className="text-xs text-gray-500">
-          This screening result is intended to support early risk assessment
-          and does not replace clinical diagnosis. Administered by healthcare
-          worker via OrthoEdge screening platform.
-        </p>
+      {/* Action buttons - outside the "report" visually, hidden on print */}
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row print:hidden">
+        <button
+          onClick={() => window.print()}
+          className="flex-1 rounded-xl border border-gray-300 bg-white px-5 py-3 cursor-pointer text-center font-semibold text-gray-700 transition hover:bg-gray-50"
+        >
+          Print report
+        </button>
+        <Link
+          href="/"
+          className="flex-1 rounded-xl cursor-pointer bg-blue-600 px-5 py-3 text-center font-semibold text-white transition hover:bg-blue-700"
+        >
+          Back to home
+        </Link>
       </div>
     </div>
-
-    {/* Action buttons - outside the "report" visually, hidden on print */}
-    <div className="mt-6 flex flex-col gap-3 sm:flex-row print:hidden">
-      <button
-        onClick={() => window.print()}
-        className="flex-1 rounded-xl border border-gray-300 bg-white px-5 py-3 cursor-pointer text-center font-semibold text-gray-700 transition hover:bg-gray-50"
-      >
-        Print report
-      </button>
-      <Link
-        href="/"
-        className="flex-1 rounded-xl cursor-pointer bg-blue-600 px-5 py-3 text-center font-semibold text-white transition hover:bg-blue-700"
-      >
-        Back to home
-      </Link>
-    </div>
-  </div>
-);
+  );
 }
