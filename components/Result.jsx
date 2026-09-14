@@ -4,17 +4,23 @@ import { useEffect, useState } from "react";
 import { getPatient, updatePatient } from "@/lib/db";
 import { combineRisk } from "@/lib/combinedRisk";
 import RiskResultCard from "@/components/RiskResultCard";
+import { useUser } from "@clerk/nextjs"
+
+// user?.fullName or user?.firstName
 import Link from "next/link";
 
 export default function Result({ patientId }) {
   const [patient, setPatient] = useState(null);
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
+  const { user } = useUser()
+  
 
   useEffect(() => {
     async function fetchAndCompute() {
       try {
         const patient = await getPatient(patientId);
+
 
         if (!patient) {
           throw new Error("Patient not found");
@@ -78,6 +84,20 @@ export default function Result({ patientId }) {
 
   return (
     <div className="mx-auto w-full max-w-2xl px-4 py-6 sm:py-8">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row print:hidden">
+  <button
+    onClick={() => window.print()}
+    className="flex-1 rounded-xl border border-gray-300 bg-white px-5 py-3 cursor-pointer text-center font-semibold text-gray-700 transition hover:bg-gray-50"
+  >
+    Print report
+  </button>
+  <Link
+    href="/"
+    className="flex-1 rounded-xl cursor-pointer bg-blue-600 px-5 py-3 text-center font-semibold text-white transition hover:bg-blue-700"
+  >
+    Back to home
+  </Link>
+</div>
       <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
         {/* Report header */}
         <div className="border-b border-gray-200 bg-blue-600 px-6 py-5 text-white print:bg-white print:text-gray-900 print:border-b-2 print:border-gray-900">
@@ -137,29 +157,15 @@ export default function Result({ patientId }) {
 
         {/* Footer disclaimer, inside the report */}
         <div className="border-t border-gray-200 bg-gray-50 px-6 py-3 print:bg-white">
-          <p className="text-xs text-gray-500">
-            This screening result is intended to support early risk assessment
-            and does not replace clinical diagnosis. Administered by healthcare
-            worker via OrthoEdge screening platform.
-          </p>
+<p className="text-xs text-gray-500">
+  This screening result is intended to support early risk assessment
+  and does not replace clinical diagnosis. Administered by{" "}
+  {user?.fullName || "healthcare worker"} via OrthoEdge screening platform.
+</p>
         </div>
       </div>
 
-      {/* Action buttons - outside the "report" visually, hidden on print */}
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row print:hidden">
-        <button
-          onClick={() => window.print()}
-          className="flex-1 rounded-xl border border-gray-300 bg-white px-5 py-3 cursor-pointer text-center font-semibold text-gray-700 transition hover:bg-gray-50"
-        >
-          Print report
-        </button>
-        <Link
-          href="/"
-          className="flex-1 rounded-xl cursor-pointer bg-blue-600 px-5 py-3 text-center font-semibold text-white transition hover:bg-blue-700"
-        >
-          Back to home
-        </Link>
-      </div>
+
     </div>
   );
 }

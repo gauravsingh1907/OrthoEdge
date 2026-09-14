@@ -1,7 +1,7 @@
 "use client";
 import { createPatient } from "@/lib/db";
 import { useUser } from "@clerk/nextjs";
-// inside component:
+
 
 import { useState } from "react";
 
