@@ -121,9 +121,7 @@ const Questionnaire = ({ patientId, onComplete }) => {
       <div className="mb-6">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-blue-600">
-              OA Risk Screening
-            </p>
+
 
             <h1 className="mt-1 text-2xl font-bold text-gray-900">
               Patient Questionnaire

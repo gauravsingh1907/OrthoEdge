@@ -3,10 +3,11 @@ import { createPatient } from "@/lib/db";
 import { useUser } from "@clerk/nextjs";
 
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 export default function PatientForm({ onComplete }) {
   const { user } = useUser();
+  const [bmi, setBmi] = useState("—");
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -25,14 +26,23 @@ export default function PatientForm({ onComplete }) {
     }));
   };
 
-  // BMI is derived from weight and height on every render.
-  const bmi =
-    formData.weight && formData.height
-      ? (
-          Number(formData.weight) /
-          (Number(formData.height) / 100) ** 2
-        ).toFixed(1)
-      : "—";
+
+useEffect(() => {
+  if (!formData.weight || !formData.height) {
+    setBmi("—");
+    return;
+  }
+
+  const timer = setTimeout(() => {
+    const calculatedBmi =
+      Number(formData.weight) /
+      (Number(formData.height) / 100) ** 2;
+
+    setBmi(calculatedBmi.toFixed(1));
+  }, 2000);
+
+  return () => clearTimeout(timer);
+}, [formData.weight, formData.height]);
 
   const isFormComplete =
     formData.name.trim() &&
