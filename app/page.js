@@ -6,23 +6,27 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { getAllPatients } from "@/lib/db";
 import { syncAllPatients } from "@/lib/serviceSync";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function Home() {
+  const { t, language, changeLanguage } = useLanguage();
+
   const [todayPatients, setTodayPatients] = useState([]);
   const [loadingPatients, setLoadingPatients] = useState(true);
   const [syncing, setSyncing] = useState(false);
   const [syncMessage, setSyncMessage] = useState("");
+
   const containerVariants = {
     hidden: {},
     visible: {
-      transition: { staggerChildren: 0.15 }
-    }
-  }
+      transition: { staggerChildren: 0.15 },
+    },
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
-  }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+  };
 
   useEffect(() => {
     async function fetchTodayPatients() {
@@ -45,8 +49,7 @@ export default function Home() {
           })
           .sort(
             (a, b) =>
-              new Date(b.timestamp).getTime() -
-              new Date(a.timestamp).getTime()
+              new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime(),
           );
 
         setTodayPatients(filtered);
@@ -77,6 +80,14 @@ export default function Home() {
     }
   }
 
+  function getRiskLabel(band) {
+    if (!band) return band;
+
+    const key = band.charAt(0).toLowerCase() + band.slice(1).toLowerCase();
+
+    return t(`risk.${key}`);
+  }
+
   function formatTime(timestamp) {
     if (!timestamp) return "--";
 
@@ -85,14 +96,19 @@ export default function Home() {
       minute: "2-digit",
     });
   }
+
   async function handleSync() {
     setSyncing(true);
     setSyncMessage("");
+
     try {
       const result = await syncAllPatients();
-      setSyncMessage(`Synced ${result.successCount}/${result.total}`);
+
+      setSyncMessage(
+        `${t("sync.synced")} ${result.successCount}/${result.total}`,
+      );
     } catch (err) {
-      setSyncMessage("Sync failed");
+      setSyncMessage(t("sync.failed"));
       console.error(err);
     } finally {
       setSyncing(false);
@@ -107,7 +123,7 @@ export default function Home() {
           initial="hidden"
           animate="visible"
           variants={{
-            visible: { transition: { staggerChildren: 0.12 } }
+            visible: { transition: { staggerChildren: 0.12 } },
           }}
           className="border-b border-blue-100 bg-white/80 backdrop-blur-sm"
         >
@@ -115,7 +131,7 @@ export default function Home() {
             <motion.div
               variants={{
                 hidden: { opacity: 0, y: -15 },
-                visible: { opacity: 1, y: 0 }
+                visible: { opacity: 1, y: 0 },
               }}
             >
               <Link href="/" className="flex items-center gap-2">
@@ -124,6 +140,7 @@ export default function Home() {
                   alt="OA Screening"
                   className="h-9 w-9 rounded-lg"
                 />
+
                 <span className="text-xl font-bold text-blue-700">
                   OrthoEdge
                 </span>
@@ -131,31 +148,47 @@ export default function Home() {
             </motion.div>
 
             <div className="flex items-center gap-2 sm:gap-3">
+<motion.div
+  variants={{
+    hidden: { opacity: 0, y: -15 },
+    visible: { opacity: 1, y: 0 },
+  }}
+>
+  <motion.button
+    type="button"
+    onClick={() => changeLanguage(language === "en" ? "hi" : "en")}
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className="rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 shadow-sm transition hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700"
+  >
+    {language === "en" ? "हिन्दी" : "English"}
+  </motion.button>
+</motion.div>
               <motion.div
                 variants={{
                   hidden: { opacity: 0, y: -15 },
-                  visible: { opacity: 1, y: 0 }
+                  visible: { opacity: 1, y: 0 },
                 }}
               >
                 <Link
                   href="/login"
                   className="rounded-xl px-3 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-100 sm:px-4"
                 >
-                  Login
+                  {t("home.login")}
                 </Link>
               </motion.div>
 
               <motion.div
                 variants={{
                   hidden: { opacity: 0, y: -15 },
-                  visible: { opacity: 1, y: 0 }
+                  visible: { opacity: 1, y: 0 },
                 }}
               >
                 <Link
                   href="/signup"
                   className="rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
                 >
-                  Sign Up
+                  {t("home.signUp")}
                 </Link>
               </motion.div>
             </div>
@@ -170,73 +203,69 @@ export default function Home() {
               viewport={{ once: true }}
               variants={containerVariants}
             >
-
-
               <motion.h1
                 variants={itemVariants}
                 className="text-4xl font-bold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl"
               >
-                Early screening for
-                <span className="text-blue-600"> osteoarthritis risk.</span>
+                {t("home.heroTitle")}
+                <span className="text-blue-600">
+                  {" "}
+                  {t("home.heroHighlight")}
+                </span>
               </motion.h1>
 
               <motion.p
                 variants={itemVariants}
                 className="mt-6 max-w-xl text-base leading-7 text-gray-600 sm:text-lg"
               >
-                A simple screening platform designed to help healthcare workers identify early osteoarthritis risk markers using patient symptoms, physical function, and gait analysis.
+                {t("home.heroDescription")}
               </motion.p>
 
               <motion.div
                 variants={itemVariants}
                 className="mt-8 flex flex-col gap-3 sm:flex-row"
               >
-
                 <Link
                   href="/signup"
                   className="rounded-xl bg-blue-600 px-6 py-3.5 text-center font-semibold text-white shadow-sm transition hover:bg-blue-700"
                 >
-                  Get Started
+                  {t("home.getStarted")}
                 </Link>
 
                 <Link
                   href="/login"
                   className="rounded-xl border border-gray-300 bg-white px-6 py-3.5 text-center font-semibold text-gray-700 transition hover:bg-gray-50"
                 >
-                  I already have an account
+                  {t("home.alreadyAccount")}
                 </Link>
-
               </motion.div>
 
               <motion.div
                 variants={itemVariants}
                 className="mt-8 grid max-w-lg grid-cols-3 gap-3"
               >
-
                 <div className="rounded-xl border bg-white p-4">
                   <p className="text-lg font-bold text-blue-600">01</p>
                   <p className="mt-1 text-sm font-medium text-gray-700">
-                    Patient
+                    {t("home.patient")}
                   </p>
                 </div>
 
                 <div className="rounded-xl border bg-white p-4">
                   <p className="text-lg font-bold text-blue-600">02</p>
                   <p className="mt-1 text-sm font-medium text-gray-700">
-                    Screening
+                    {t("home.screening")}
                   </p>
                 </div>
 
                 <div className="rounded-xl border bg-white p-4">
                   <p className="text-lg font-bold text-blue-600">03</p>
                   <p className="mt-1 text-sm font-medium text-gray-700">
-                    Risk Result
+                    {t("home.riskResult")}
                   </p>
                 </div>
-
               </motion.div>
             </motion.div>
-
 
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -248,15 +277,15 @@ export default function Home() {
               <div className="rounded-3xl border bg-white p-6 shadow-sm">
                 <div className="rounded-2xl bg-blue-50 p-6">
                   <div className="mx-auto flex items-center justify-center">
-                    <div >
-                      <p className="text-sm text-center  font-medium text-gray-500">
-                        Screening Overview
+                    <div>
+                      <p className="text-sm text-center font-medium text-gray-500">
+                        {t("home.screeningOverview")}
                       </p>
+
                       <h2 className="mt-1 text-2xl font-bold text-gray-900">
-                        OA Risk Assessment
+                        {t("home.oaRiskAssessment")}
                       </h2>
                     </div>
-
                   </div>
 
                   <motion.div
@@ -264,40 +293,67 @@ export default function Home() {
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={{
-                      visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
+                      visible: {
+                        transition: {
+                          staggerChildren: 0.15,
+                          delayChildren: 0.2,
+                        },
+                      },
                     }}
                     className="mt-6 space-y-3"
                   >
                     <motion.div
-                      variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: { opacity: 1, x: 0 },
+                      }}
                       className="flex items-center justify-between rounded-xl bg-white px-4 py-4"
                     >
-                      <span className="font-medium text-gray-700">Questionnaire</span>
-                      <span className="text-sm font-semibold text-blue-600">Symptoms</span>
+                      <span className="font-medium text-gray-700">
+                        {t("home.questionnaire")}
+                      </span>
+
+                      <span className="text-sm font-semibold text-blue-600">
+                        {t("home.symptoms")}
+                      </span>
                     </motion.div>
 
                     <motion.div
-                      variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: { opacity: 1, x: 0 },
+                      }}
                       className="flex items-center justify-between rounded-xl bg-white px-4 py-4"
                     >
-                      <span className="font-medium text-gray-700">Gait Analysis</span>
-                      <span className="text-sm font-semibold text-blue-600">Movement</span>
+                      <span className="font-medium text-gray-700">
+                        {t("home.gaitAnalysis")}
+                      </span>
+
+                      <span className="text-sm font-semibold text-blue-600">
+                        {t("home.movement")}
+                      </span>
                     </motion.div>
 
                     <motion.div
-                      variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: { opacity: 1, x: 0 },
+                      }}
                       className="flex items-center justify-between rounded-xl border-2 border-blue-200 bg-white px-4 py-4"
                     >
-                      <span className="font-semibold text-gray-900">Final Assessment</span>
+                      <span className="font-semibold text-gray-900">
+                        {t("home.finalAssessment")}
+                      </span>
+
                       <span className="rounded-full bg-blue-100 px-3 py-1 text-sm font-bold text-blue-700">
-                        Risk Score
+                        {t("home.riskScore")}
                       </span>
                     </motion.div>
                   </motion.div>
                 </div>
 
                 <p className="mt-5 text-center text-sm text-gray-500">
-                  Designed for simple, accessible screening in low-resource settings.
+                  {t("home.lowResource")}
                 </p>
               </div>
             </motion.div>
@@ -317,22 +373,32 @@ export default function Home() {
 
               <div>
                 <span className="text-xl font-bold text-blue-700">
-                  OA Screening
+                  OrthoEdge
                 </span>
 
                 <p className="hidden text-xs text-gray-500 sm:block">
-                  Healthcare screening platform
+                  {t("home.healthcarePlatform")}
                 </p>
               </div>
             </Link>
 
             <div className="flex items-center gap-3">
+              {/* Language Selector */}
+              <button
+                type="button"
+                onClick={() => changeLanguage(language === "en" ? "hi" : "en")}
+                aria-label={t("language.select")}
+                className="rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 shadow-sm transition hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700"
+              >
+                {language === "en" ? "हिन्दी" : "English"}
+              </button>
+
               <button
                 onClick={handleSync}
                 disabled={syncing}
                 className="rounded-xl border border-gray-300 bg-white px-3 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 disabled:opacity-50"
               >
-                {syncing ? "Syncing..." : "Sync data"}
+                {syncing ? t("sync.syncing") : t("sync.syncData")}
               </button>
 
               {syncMessage && (
@@ -347,16 +413,15 @@ export default function Home() {
         <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
           <div className="rounded-3xl bg-blue-600 p-6 text-white shadow-sm sm:p-10">
             <p className="text-sm font-medium text-blue-100">
-              Healthcare Worker Dashboard
+              {t("home.healthcareWorkerDashboard")}
             </p>
 
             <h1 className="mt-2 text-3xl font-bold sm:text-4xl">
-              Welcome back
+              {t("home.welcomeBack")}
             </h1>
 
             <p className="mt-3 max-w-2xl leading-6 text-blue-100">
-              Start a new patient screening or review previously stored
-              screening records.
+              {t("home.dashboardDescription")}
             </p>
           </div>
 
@@ -370,16 +435,15 @@ export default function Home() {
               </div>
 
               <h2 className="mt-5 text-xl font-bold text-gray-900">
-                Start New Screening
+                {t("home.startNewScreening")}
               </h2>
 
               <p className="mt-2 text-sm leading-6 text-gray-500">
-                Create a patient record and perform questionnaire and gait
-                screening.
+                {t("home.startScreeningDescription")}
               </p>
 
               <div className="mt-5 font-semibold text-blue-600">
-                Start screening →
+                {t("home.startScreening")} →
               </div>
             </Link>
 
@@ -392,16 +456,15 @@ export default function Home() {
               </div>
 
               <h2 className="mt-5 text-xl font-bold text-gray-900">
-                View All Records
+                {t("home.viewAllRecords")}
               </h2>
 
               <p className="mt-2 text-sm leading-6 text-gray-500">
-                View previously stored patient screening results and risk
-                assessments.
+                {t("home.recordsDescription")}
               </p>
 
               <div className="mt-5 font-semibold text-blue-600">
-                View records →
+                {t("home.viewRecords")} →
               </div>
             </Link>
           </div>
@@ -410,11 +473,11 @@ export default function Home() {
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-sm font-medium text-gray-500">
-                  Today
+                  {t("home.today")}
                 </p>
 
                 <h2 className="mt-1 text-xl font-bold text-gray-900">
-                  Patients Screened
+                  {t("home.patientsScreened")}
                 </h2>
               </div>
 
@@ -424,7 +487,7 @@ export default function Home() {
                 </p>
 
                 <p className="text-xs font-medium text-blue-600">
-                  patients
+                  {t("home.patients")}
                 </p>
               </div>
             </div>
@@ -434,11 +497,20 @@ export default function Home() {
                 <table className="w-full min-w-500px text-left">
                   <thead>
                     <tr className="border-b text-xs uppercase tracking-wide text-gray-500">
-                      <th className="px-3 py-3 font-semibold">Patient</th>
-                      <th className="px-3 py-3 font-semibold">Age</th>
-                      <th className="px-3 py-3 font-semibold">Status</th>
+                      <th className="px-3 py-3 font-semibold">
+                        {t("home.patient")}
+                      </th>
+
+                      <th className="px-3 py-3 font-semibold">
+                        {t("patient.age")}
+                      </th>
+
+                      <th className="px-3 py-3 font-semibold">
+                        {t("home.status")}
+                      </th>
+
                       <th className="px-3 py-3 text-right font-semibold">
-                        Time
+                        {t("home.time")}
                       </th>
                     </tr>
                   </thead>
@@ -451,7 +523,7 @@ export default function Home() {
                         <tr key={patient.id}>
                           <td className="px-3 py-3">
                             <p className="font-semibold text-gray-900">
-                              {patient.name || "Unnamed"}
+                              {patient.name || t("home.unnamed")}
                             </p>
                           </td>
 
@@ -463,14 +535,14 @@ export default function Home() {
                             {hasResult ? (
                               <span
                                 className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${getRiskStyle(
-                                  patient.combinedScore.band
+                                  patient.combinedScore.band,
                                 )}`}
                               >
-                                {patient.combinedScore.band}
+                                {getRiskLabel(patient.combinedScore.band)}
                               </span>
                             ) : (
                               <span className="inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-600">
-                                Incomplete
+                                {t("home.incomplete")}
                               </span>
                             )}
                           </td>
@@ -489,7 +561,7 @@ export default function Home() {
             {!loadingPatients && todayPatients.length === 0 && (
               <div className="mt-5 rounded-xl bg-gray-50 px-4 py-5 text-center">
                 <p className="text-sm text-gray-500">
-                  No patients screened today yet.
+                  {t("home.noPatientsToday")}
                 </p>
               </div>
             )}
@@ -499,7 +571,8 @@ export default function Home() {
                 href="/records"
                 className="mt-4 block text-center text-sm font-semibold text-blue-600 hover:text-blue-700"
               >
-                View all {todayPatients.length} records →
+                {t("home.viewAllCount")} {todayPatients.length}{" "}
+                {t("home.records")} →
               </Link>
             )}
           </div>
@@ -510,20 +583,18 @@ export default function Home() {
 
               <div>
                 <h3 className="font-semibold text-gray-900">
-                  Offline-ready screening
+                  {t("home.offlineReady")}
                 </h3>
 
                 <p className="mt-1 text-sm leading-6 text-gray-500">
-                  Patient screening data is currently stored locally on this
-                  device using offline storage.
+                  {t("home.offlineDescription")}
                 </p>
               </div>
             </div>
           </div>
 
           <p className="mt-8 text-center text-xs text-gray-500">
-            OA screening is intended to support early risk assessment and does
-            not replace clinical diagnosis.
+            {t("home.disclaimer")}
           </p>
         </section>
       </Show>

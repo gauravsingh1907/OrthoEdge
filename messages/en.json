@@ -1,0 +1,268 @@
+{
+  "common": {
+    "english": "English",
+    "hindi": "हिन्दी",
+    "save": "Save",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "print": "Print",
+    "close": "Close",
+    "loading": "Loading...",
+    "yes": "Yes",
+    "no": "No"
+  },
+
+  "language": {
+    "select": "Language",
+    "english": "English",
+    "hindi": "हिन्दी"
+  },
+
+  "patient": {
+    "title": "Patient Information",
+    "description": "Enter the patient details below.",
+    "name": "Name",
+    "namePlaceholder": "Enter patient name",
+    "age": "Age",
+    "agePlaceholder": "Enter age",
+    "gender": "Gender",
+    "selectGender": "Select gender",
+    "weight": "Weight",
+    "weightPlaceholder": "e.g. 70",
+    "height": "Height",
+    "heightPlaceholder": "e.g. 170",
+    "bmi": "BMI",
+    "abhaNumber": "ABHA Number",
+    "abhaPlaceholder": "14-digit ABHA number",
+    "male": "Male",
+    "female": "Female",
+    "other": "Other"
+  },
+
+  "questionnaire": {
+    "title": "Questionnaire",
+    "pain": "Pain",
+    "stiffness": "Stiffness",
+    "physicalFunction": "Physical Function",
+    "none": "None",
+    "mild": "Mild",
+    "moderate": "Moderate",
+    "severe": "Severe",
+    "extreme": "Extreme",
+    "questions": {
+      "painWalkingFlat": "How much pain do you feel when walking on a flat surface?",
+      "painStairs": "How much pain do you feel when going up or down stairs?",
+      "painNight": "How much pain do you feel at night while in bed?",
+      "painSittingLying": "How much pain do you feel while sitting or lying down?",
+      "painStanding": "How much pain do you feel while standing upright?",
+      "stiffnessMorning": "How stiff are your joints right after waking up in the morning?",
+      "stiffnessLaterDay": "How stiff do your joints get later in the day, after sitting or resting?",
+      "functionDownStairs": "How much difficulty do you have going down stairs?",
+      "functionUpStairs": "How much difficulty do you have going up stairs?",
+      "functionRising": "How much difficulty do you have rising from sitting?",
+      "functionStanding": "How much difficulty do you have standing?",
+      "functionBending": "How much difficulty do you have bending to the floor?",
+      "functionWalking": "How much difficulty do you have walking on flat ground?",
+      "functionVehicle": "How much difficulty do you have getting in or out of a vehicle?",
+      "functionHeavyWork": "How much difficulty do you have doing heavy household or farm work?",
+      "functionBed": "How much difficulty do you have getting in or out of bed?",
+      "functionSquatting": "How much difficulty do you have squatting?"
+    },
+    "instruction": "Select the response that best describes the patient's current condition."
+  },
+
+"gait": {
+  "title": "Gait Assessment",
+  "subtitle": "Knee movement and gait screening",
+  "assessment": "Assessment",
+  "assessmentProgress": "Assessment progress",
+
+  "ready": "Ready for gait assessment",
+  "readyDescription": "The movement sensor will record walking patterns to identify gait-related risk markers.",
+
+  "beforeStarting": "Before starting",
+
+  "fitSensor": "Fit the sensor",
+  "fitSensorDescription": "Secure the knee sensor correctly before starting.",
+
+  "checkConnection": "Check connection",
+  "checkConnectionDescription": "The system will establish the sensor connection.",
+
+  "walkNormally": "Walk normally",
+  "walkNormallyDescription": "Maintain your normal walking pace during recording.",
+
+  "start": "Start Gait Assessment",
+  "sensorReminder": "Ensure the sensor is fitted correctly before continuing.",
+
+  "deviceSetup": "Device setup",
+  "connecting": "Connecting to sensor",
+  "connectingDescription": "Establishing a connection with the knee movement sensor. Please remain ready for the assessment.",
+  "sensorStatus": "Sensor status",
+
+  "recordingInProgress": "RECORDING IN PROGRESS",
+  "recordingDescription": "Maintain a natural walking pace while the sensor records your movement.",
+  "recordingProgress": "Recording progress",
+  "seconds": "sec",
+
+  "completed": "Assessment completed",
+  "analysisComplete": "Gait analysis complete",
+  "completeDescription": "Movement data has been recorded successfully. Preparing the final screening result.",
+
+  "dataSaved": "Data saved",
+  "dataSavedDescription": "Gait assessment stored successfully",
+
+  "footer": "OA Screening System · Gait Movement Assessment"
+},
+
+  "result": {
+    "title": "Screening Result",
+    "patientInformation": "Patient Information",
+    "questionnaireResult": "Questionnaire Result",
+    "gaitResult": "Gait Result",
+    "combinedResult": "Combined Risk Result",
+    "overallScore": "Overall Score",
+    "painScore": "Pain Score",
+    "stiffnessScore": "Stiffness Score",
+    "functionScore": "Physical Function Score",
+    "gaitScore": "Gait Score",
+    "combinedScore": "Combined Score",
+    "riskLevel": "Risk Level",
+    "description": "Description",
+    "referral": "Referral Recommendation",
+      "reportTitle": "OrthoEdge Screening Report",
+  "assessmentTitle": "Osteoarthritis Risk Assessment",
+  "patientDetails": "Patient Details",
+  "name": "Name",
+  "age": "Age",
+  "gender": "Gender",
+  "abhaNumber": "ABHA No.",
+  "riskAssessment": "Risk Assessment",
+  "printReport": "Print Report",
+  "goHome": "Back to Home",
+  "loading": "Loading results...",
+  "somethingWentWrong": "Something went wrong",
+  "loadError": "Unable to load screening results.",
+  "disclaimer": "This screening result is intended to support early risk assessment and does not replace clinical diagnosis.",
+  "administeredBy": "Administered by",
+  "healthcareWorker": "healthcare worker",
+  "viaPlatform": "via OrthoEdge screening platform."
+  },
+
+"risk": {
+  "none": "No Risk",
+  "low": "Low Risk",
+  "mild": "Mild Risk",
+  "moderate": "Moderate Risk",
+  "severe": "Severe Risk",
+  "overallAssessment": "Overall OA risk assessment",
+  "classification": "Classification",
+  "lowRange": "Low (0–30)",
+  "mildRange": "Mild (31–50)",
+  "moderateRange": "Moderate (51–75)",
+  "severeRange": "severe (76–100)",
+  "questionnaireScore": "Questionnaire score",
+  "womacDescription": "Self-reported WOMAC (pain, stiffness, function)",
+  "gaitTestScore": "Gait test score",
+  "gaitDescription": "Sensor-based gait analysis"
+},
+
+  "records": {
+  "title": "Patient Records",
+  "name": "Name",
+  "age": "Age",
+  "abhaNumber": "ABHA Number",
+  "risk": "Risk",
+  "date": "Date",
+  "view": "View Report",
+  "noRecords": "No patient records found.",
+  "loading": "Loading screening records...",
+  "noScreenings": "No screenings yet",
+  "noScreeningsDescription": "Start your first screening to see patient records here.",
+  "record": "record",
+  "records": "records",
+  "storedLocally": "stored locally",
+  "unnamedPatient": "Unnamed Patient",
+  "screeningIncomplete": "Screening Incomplete",
+  "notProvided": "Not provided",
+  "dateUnavailable": "Date unavailable",
+  "combinedRiskScore": "Combined Risk Score"
+  },
+
+  "screening": {
+    "title": "OA Screening",
+    "patientDetails": "Patient Details",
+    "questionnaire": "Questionnaire",
+    "gaitTest": "Gait Test",
+    "result": "Result"
+  },
+
+  "sync": {
+    "syncing": "Syncing...",
+    "syncData": "Sync data",
+    "synced": "Synced",
+    "failed": "Sync failed"
+  },
+
+  "home": {
+    "title": "OrthoEdge",
+    "subtitle": "AI-Assisted Osteoarthritis Screening System",
+
+    "login": "Login",
+    "signUp": "Sign Up",
+
+    "heroTitle": "Early screening for",
+    "heroHighlight": "osteoarthritis risk.",
+    "heroDescription": "A simple screening platform designed to help healthcare workers identify early osteoarthritis risk markers using patient symptoms, physical function, and gait analysis.",
+
+    "getStarted": "Get Started",
+    "alreadyAccount": "I already have an account",
+
+    "patient": "Patient",
+    "screening": "Screening",
+    "riskResult": "Risk Result",
+
+    "screeningOverview": "Screening Overview",
+    "oaRiskAssessment": "OA Risk Assessment",
+    "questionnaire": "Questionnaire",
+    "symptoms": "Symptoms",
+    "gaitAnalysis": "Gait Analysis",
+    "movement": "Movement",
+    "finalAssessment": "Final Assessment",
+    "riskScore": "Risk Score",
+    "lowResource": "Designed for simple, accessible screening in low-resource settings.",
+
+    "healthcarePlatform": "Healthcare screening platform",
+    "healthcareWorkerDashboard": "Healthcare Worker Dashboard",
+    "welcomeBack": "Welcome back",
+    "dashboardDescription": "Start a new patient screening or review previously stored screening records.",
+
+    "startNewScreening": "Start New Screening",
+    "startScreeningDescription": "Create a patient record and perform questionnaire and gait screening.",
+    "startScreening": "Start screening",
+
+    "viewAllRecords": "View All Records",
+    "recordsDescription": "View previously stored patient screening results and risk assessments.",
+    "viewRecords": "View records",
+
+    "today": "Today",
+    "patientsScreened": "Patients Screened",
+    "patients": "patients",
+
+    "status": "Status",
+    "time": "Time",
+    "unnamed": "Unnamed",
+    "incomplete": "Incomplete",
+
+    "noPatientsToday": "No patients screened today yet.",
+    "viewAllCount": "View all",
+    "records": "records",
+
+    "offlineReady": "Offline-ready screening",
+    "offlineDescription": "Patient screening data is currently stored locally on this device using offline storage.",
+
+    "disclaimer": "OA screening is intended to support early risk assessment and does not replace clinical diagnosis."
+  }
+}

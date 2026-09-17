@@ -1,10 +1,12 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
 import { updatePatient } from "@/lib/db";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function GaitTest({ patientId, onComplete }) {
+  const { t } = useLanguage();
+
   const [status, setStatus] = useState("idle");
   const [countdown, setCountdown] = useState(5);
 
@@ -83,15 +85,15 @@ export default function GaitTest({ patientId, onComplete }) {
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-600">
-                Assessment 03 / 03
+                {t("gait.assessment")} 03 / 03
               </p>
 
               <h1 className="mt-1.5 text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">
-                Gait Assessment
+                {t("gait.title")}
               </h1>
 
               <p className="mt-1 text-sm text-slate-500">
-                Knee movement and gait screening
+                {t("gait.subtitle")}
               </p>
             </div>
 
@@ -109,7 +111,7 @@ export default function GaitTest({ patientId, onComplete }) {
           {/* Progress */}
           <div className="mt-6">
             <div className="mb-2 flex items-center justify-between text-xs text-slate-500">
-              <span>Assessment progress</span>
+              <span>{t("gait.assessmentProgress")}</span>
               <span>{progress}%</span>
             </div>
 
@@ -135,12 +137,11 @@ export default function GaitTest({ patientId, onComplete }) {
 
                 <div>
                   <h2 className="text-lg font-semibold text-slate-900">
-                    Ready for gait assessment
+                    {t("gait.ready")}
                   </h2>
 
                   <p className="mt-2 max-w-xl text-sm leading-6 text-slate-600">
-                    The movement sensor will record walking patterns to identify
-                    gait-related risk markers.
+                    {t("gait.readyDescription")}
                   </p>
                 </div>
               </div>
@@ -149,7 +150,7 @@ export default function GaitTest({ patientId, onComplete }) {
             {/* Instructions */}
             <div className="mt-6">
               <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
-                Before starting
+                {t("gait.beforeStarting")}
               </p>
 
               <div className="grid gap-3 sm:grid-cols-3">
@@ -160,11 +161,11 @@ export default function GaitTest({ patientId, onComplete }) {
                   </div>
 
                   <p className="mt-3 text-sm font-semibold text-slate-900">
-                    Fit the sensor
+                    {t("gait.fitSensor")}
                   </p>
 
                   <p className="mt-1 text-xs leading-5 text-slate-500">
-                    Secure the knee sensor correctly before starting.
+                    {t("gait.fitSensorDescription")}
                   </p>
                 </div>
 
@@ -174,11 +175,11 @@ export default function GaitTest({ patientId, onComplete }) {
                   </div>
 
                   <p className="mt-3 text-sm font-semibold text-slate-900">
-                    Check connection
+                    {t("gait.checkConnection")}
                   </p>
 
                   <p className="mt-1 text-xs leading-5 text-slate-500">
-                    The system will establish the sensor connection.
+                    {t("gait.checkConnectionDescription")}
                   </p>
                 </div>
 
@@ -188,11 +189,11 @@ export default function GaitTest({ patientId, onComplete }) {
                   </div>
 
                   <p className="mt-3 text-sm font-semibold text-slate-900">
-                    Walk normally
+                    {t("gait.walkNormally")}
                   </p>
 
                   <p className="mt-1 text-xs leading-5 text-slate-500">
-                    Maintain your normal walking pace during recording.
+                    {t("gait.walkNormallyDescription")}
                   </p>
                 </div>
 
@@ -204,11 +205,11 @@ export default function GaitTest({ patientId, onComplete }) {
               onClick={handleStart}
               className="mt-7 w-full rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 active:scale-[0.99]"
             >
-              Start Gait Assessment
+              {t("gait.start")}
             </button>
 
             <p className="mt-3 text-center text-xs text-slate-400">
-              Ensure the sensor is fitted correctly before continuing.
+              {t("gait.sensorReminder")}
             </p>
           </div>
         )}
@@ -222,27 +223,26 @@ export default function GaitTest({ patientId, onComplete }) {
             </div>
 
             <p className="mt-7 text-xs font-semibold uppercase tracking-[0.15em] text-blue-600">
-              Device setup
+              {t("gait.deviceSetup")}
             </p>
 
             <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
-              Connecting to sensor
+              {t("gait.connecting")}
             </h2>
 
             <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-slate-500">
-              Establishing a connection with the knee movement sensor.
-              Please remain ready for the assessment.
+              {t("gait.connectingDescription")}
             </p>
 
             <div className="mx-auto mt-7 max-w-sm rounded-xl border border-slate-200 bg-slate-50 p-4">
               <div className="flex items-center justify-between text-sm">
                 <span className="text-slate-500">
-                  Sensor status
+                  {t("gait.sensorStatus")}
                 </span>
 
                 <span className="flex items-center gap-2 font-medium text-amber-600">
                   <span className="h-2 w-2 rounded-full bg-amber-500" />
-                  Connecting
+                  {t("gait.connecting")}
                 </span>
               </div>
             </div>
@@ -255,16 +255,15 @@ export default function GaitTest({ patientId, onComplete }) {
 
             <div className="inline-flex items-center gap-2 rounded-full border border-red-100 bg-red-50 px-4 py-2 text-xs font-semibold tracking-wide text-red-600">
               <span className="h-2 w-2 animate-pulse rounded-full bg-red-500" />
-              RECORDING IN PROGRESS
+              {t("gait.recordingInProgress")}
             </div>
 
             <h2 className="mt-5 text-2xl font-semibold tracking-tight text-slate-900">
-              Walk normally
+              {t("gait.walkNormally")}
             </h2>
 
             <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-500">
-              Maintain a natural walking pace while the sensor records your
-              movement.
+              {t("gait.recordingDescription")}
             </p>
 
             {/* Countdown */}
@@ -278,8 +277,8 @@ export default function GaitTest({ patientId, onComplete }) {
 
             <div className="mx-auto mt-8 max-w-sm">
               <div className="flex justify-between text-xs text-slate-400">
-                <span>Recording progress</span>
-                <span>{6 - countdown}/5 sec</span>
+                <span>{t("gait.recordingProgress")}</span>
+                <span>{6 - countdown}/5 {t("gait.seconds")}</span>
               </div>
 
               <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-slate-100">
@@ -307,16 +306,15 @@ export default function GaitTest({ patientId, onComplete }) {
             </div>
 
             <p className="mt-6 text-xs font-semibold uppercase tracking-[0.15em] text-emerald-600">
-              Assessment completed
+              {t("gait.completed")}
             </p>
 
             <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
-              Gait analysis complete
+              {t("gait.analysisComplete")}
             </h2>
 
             <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-slate-500">
-              Movement data has been recorded successfully. Preparing the
-              final screening result.
+              {t("gait.completeDescription")}
             </p>
 
             <div className="mx-auto mt-7 flex max-w-sm items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 text-left">
@@ -328,11 +326,11 @@ export default function GaitTest({ patientId, onComplete }) {
 
               <div>
                 <p className="text-sm font-semibold text-slate-900">
-                  Data saved
+                  {t("gait.dataSaved")}
                 </p>
 
                 <p className="mt-0.5 text-xs text-slate-500">
-                  Gait assessment stored successfully
+                  {t("gait.dataSavedDescription")}
                 </p>
               </div>
             </div>
@@ -345,9 +343,8 @@ export default function GaitTest({ patientId, onComplete }) {
       </div>
 
       <p className="mt-5 text-center text-xs text-slate-400">
-        OA Screening System · Gait Movement Assessment
+        {t("gait.footer")}
       </p>
     </div>
   );
 }
-

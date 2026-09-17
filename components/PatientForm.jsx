@@ -1,13 +1,17 @@
 "use client";
+
 import { createPatient } from "@/lib/db";
 import { useUser } from "@clerk/nextjs";
+import { useLanguage } from "@/components/LanguageProvider";
 
-
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function PatientForm({ onComplete }) {
   const { user } = useUser();
+  const { t } = useLanguage();
+
   const [bmi, setBmi] = useState("—");
+
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -26,23 +30,22 @@ export default function PatientForm({ onComplete }) {
     }));
   };
 
+  useEffect(() => {
+    if (!formData.weight || !formData.height) {
+      setBmi("—");
+      return;
+    }
 
-useEffect(() => {
-  if (!formData.weight || !formData.height) {
-    setBmi("—");
-    return;
-  }
+    const timer = setTimeout(() => {
+      const calculatedBmi =
+        Number(formData.weight) /
+        (Number(formData.height) / 100) ** 2;
 
-  const timer = setTimeout(() => {
-    const calculatedBmi =
-      Number(formData.weight) /
-      (Number(formData.height) / 100) ** 2;
+      setBmi(calculatedBmi.toFixed(1));
+    }, 2000);
 
-    setBmi(calculatedBmi.toFixed(1));
-  }, 2000);
-
-  return () => clearTimeout(timer);
-}, [formData.weight, formData.height]);
+    return () => clearTimeout(timer);
+  }, [formData.weight, formData.height]);
 
   const isFormComplete =
     formData.name.trim() &&
@@ -54,6 +57,7 @@ useEffect(() => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const newId = await createPatient({
         workerId: user.id,
@@ -67,7 +71,6 @@ useEffect(() => {
       });
 
       console.log("Patient created:", newId);
-
       onComplete(newId);
     } catch (error) {
       console.error("Failed to create patient:", error);
@@ -81,21 +84,23 @@ useEffect(() => {
     >
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-gray-900">
-          Patient Information
+          {t("patient.title")}
         </h2>
+
         <p className="mt-1 text-sm text-gray-500">
-          Enter the patient details below.
+          {t("patient.description")}
         </p>
       </div>
 
       <div className="space-y-5">
+
         {/* Name */}
         <div>
           <label
             htmlFor="name"
             className="mb-2 block text-sm font-medium text-gray-700"
           >
-            Name
+            {t("patient.name")}
           </label>
 
           <input
@@ -104,7 +109,7 @@ useEffect(() => {
             type="text"
             value={formData.name}
             onChange={handleChange}
-            placeholder="Enter patient name"
+            placeholder={t("patient.namePlaceholder")}
             className="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
           />
         </div>
@@ -115,7 +120,7 @@ useEffect(() => {
             htmlFor="age"
             className="mb-2 block text-sm font-medium text-gray-700"
           >
-            Age
+            {t("patient.age")}
           </label>
 
           <input
@@ -125,7 +130,7 @@ useEffect(() => {
             min="0"
             value={formData.age}
             onChange={handleChange}
-            placeholder="Enter age"
+            placeholder={t("patient.agePlaceholder")}
             className="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
           />
         </div>
@@ -136,7 +141,7 @@ useEffect(() => {
             htmlFor="gender"
             className="mb-2 block text-sm font-medium text-gray-700"
           >
-            Gender
+            {t("patient.gender")}
           </label>
 
           <select
@@ -146,10 +151,21 @@ useEffect(() => {
             onChange={handleChange}
             className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
           >
-            <option value="">Select gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
+            <option value="">
+              {t("patient.selectGender")}
+            </option>
+
+            <option value="Male">
+              {t("patient.male")}
+            </option>
+
+            <option value="Female">
+              {t("patient.female")}
+            </option>
+
+            <option value="Other">
+              {t("patient.other")}
+            </option>
           </select>
         </div>
 
@@ -160,7 +176,7 @@ useEffect(() => {
               htmlFor="weight"
               className="mb-2 block text-sm font-medium text-gray-700"
             >
-              Weight (kg)
+              {t("patient.weight")} (kg)
             </label>
 
             <input
@@ -171,7 +187,7 @@ useEffect(() => {
               step="0.1"
               value={formData.weight}
               onChange={handleChange}
-              placeholder="e.g. 70"
+              placeholder={t("patient.weightPlaceholder")}
               className="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
             />
           </div>
@@ -181,7 +197,7 @@ useEffect(() => {
               htmlFor="height"
               className="mb-2 block text-sm font-medium text-gray-700"
             >
-              Height (cm)
+              {t("patient.height")} (cm)
             </label>
 
             <input
@@ -192,7 +208,7 @@ useEffect(() => {
               step="0.1"
               value={formData.height}
               onChange={handleChange}
-              placeholder="e.g. 170"
+              placeholder={t("patient.heightPlaceholder")}
               className="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
             />
           </div>
@@ -201,9 +217,13 @@ useEffect(() => {
         {/* BMI - Derived, not an input */}
         <div className="rounded-xl border border-blue-100 bg-blue-50 p-4">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-gray-700">BMI</span>
+            <span className="text-sm font-medium text-gray-700">
+              {t("patient.bmi")}
+            </span>
 
-            <span className="text-xl font-bold text-blue-700">{bmi}</span>
+            <span className="text-xl font-bold text-blue-700">
+              {bmi}
+            </span>
           </div>
         </div>
 
@@ -213,7 +233,7 @@ useEffect(() => {
             htmlFor="abhaNumber"
             className="mb-2 block text-sm font-medium text-gray-700"
           >
-            ABHA Number
+            {t("patient.abhaNumber")}
           </label>
 
           <input
@@ -224,10 +244,16 @@ useEffect(() => {
             maxLength={14}
             value={formData.abhaNumber}
             onChange={(e) => {
-              const digitsOnly = e.target.value.replace(/\D/g, "").slice(0, 14);
-              setFormData((prev) => ({ ...prev, abhaNumber: digitsOnly }));
+              const digitsOnly = e.target.value
+                .replace(/\D/g, "")
+                .slice(0, 14);
+
+              setFormData((prev) => ({
+                ...prev,
+                abhaNumber: digitsOnly,
+              }));
             }}
-            placeholder="14-digit ABHA number"
+            placeholder={t("patient.abhaPlaceholder")}
             className="w-full rounded-xl border border-gray-300 px-4 py-3 text-base outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
           />
         </div>
@@ -238,8 +264,9 @@ useEffect(() => {
           disabled={!isFormComplete}
           className="w-full rounded-xl bg-blue-600 px-5 py-3.5 text-base font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-300"
         >
-          Continue
+          {t("common.continue")}
         </button>
+
       </div>
     </form>
   );
