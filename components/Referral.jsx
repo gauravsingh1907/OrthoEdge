@@ -61,34 +61,45 @@ export default function Referral() {
     setNearestHospital(hospitalsWithDistance[0]);
   }
 
-  function getCurrentLocation() {
-    setError("");
-    setStatus("locating");
+function getCurrentLocation() {
+  setError("");
+  setStatus("locating");
 
-    if (!navigator.geolocation) {
-      setStatus("error");
-      setError(t("referral.locationNotSupported"));
-      return;
-    }
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-
-        findNearestHospital(latitude, longitude);
-        setStatus("success");
-      },
-      () => {
-        setStatus("error");
-        setError(t("referral.locationFailed"));
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 10000,
-        maximumAge: 0,
-      },
-    );
+  if (!navigator.geolocation) {
+    setStatus("error");
+    setError(t("referral.locationNotSupported"));
+    return;
   }
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const { latitude, longitude } = position.coords;
+
+      findNearestHospital(latitude, longitude);
+
+      setError("");
+      setStatus("success");
+    },
+    (error) => {
+      console.log("GPS error:", error);
+
+      setStatus("error");
+
+      if (error.code === 1) {
+        setError(t("referral.locationFailed"));
+      } else if (error.code === 2) {
+        setError(t("referral.locationFailed"));
+      } else if (error.code === 3) {
+        setError(t("referral.locationFailed"));
+      }
+    },
+    {
+      enableHighAccuracy: true,
+      timeout: 30000,
+      maximumAge: 0,
+    }
+  );
+}
 
   function handleManualSearch() {
     if (!selectedState || !selectedCity) return;

@@ -126,6 +126,7 @@
     "title": "स्क्रीनिंग परिणाम",
     "patientInformation": "रोगी की जानकारी",
     "questionnaireResult": "प्रश्नावली परिणाम",
+    "questionnaireResponses": "प्रश्नावली प्रतिक्रियाएँ",
     "gaitResult": "चलने की जांच का परिणाम",
     "combinedResult": "संयुक्त जोखिम परिणाम",
     "overallScore": "कुल स्कोर",
@@ -155,7 +156,13 @@
   "administeredBy": "मूल्यांकन किया गया",
   "healthcareWorker": "स्वास्थ्यकर्मी",
   "viaPlatform": "OrthoEdge स्क्रीनिंग प्लेटफ़ॉर्म के माध्यम से।",
-  "continueReferral": "रेफरल के लिए आगे बढ़ें →"
+  "continueReferral": "रेफरल के लिए आगे बढ़ें →",
+  "recommendationTitle": "सुझाव",
+"recommendationNone": "नियमित गतिविधियाँ जारी रखें और समय-समय पर निगरानी करते रहें।",
+"recommendationLow": "नियमित शारीरिक गतिविधि बनाए रखें और लक्षणों पर ध्यान दें।",
+"recommendationMild": "जीवनशैली में आवश्यक बदलाव पर विचार करें और लक्षण बने रहने पर स्वास्थ्यकर्मी से परामर्श लें।",
+"recommendationModerate": "स्वास्थ्यकर्मी से मूल्यांकन कराने पर विचार करें।",
+"recommendationSevere": "आगे के मूल्यांकन के लिए स्वास्थ्यकर्मी से रेफरल की सलाह दी जाती है।"
 
   },
 

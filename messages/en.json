@@ -121,6 +121,7 @@
     "title": "Screening Result",
     "patientInformation": "Patient Information",
     "questionnaireResult": "Questionnaire Result",
+    "questionnaireResponses": "Questionnaire Responses",
     "gaitResult": "Gait Result",
     "combinedResult": "Combined Risk Result",
     "overallScore": "Overall Score",
@@ -149,7 +150,13 @@
   "administeredBy": "Administered by",
   "healthcareWorker": "healthcare worker",
   "viaPlatform": "via OrthoEdge screening platform.",
-  "continueReferral": "Continue to Referral →"
+  "continueReferral": "Continue to Referral →",
+  "recommendationTitle": "Recommendation",
+"recommendationNone": "Continue regular activity and routine monitoring.",
+"recommendationLow": "Maintain regular physical activity and monitor symptoms.",
+"recommendationMild": "Consider lifestyle adjustments and follow-up if symptoms persist.",
+"recommendationModerate": "Consider evaluation by a healthcare professional.",
+"recommendationSevere": "Referral to a healthcare professional is recommended for further evaluation."
   },
 
 "risk": {
@@ -282,4 +289,5 @@
   "selectCity": "Select City",
   "nearestHospital": "Nearest Hospital"
 }
+
 }
