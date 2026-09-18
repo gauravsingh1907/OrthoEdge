@@ -4,6 +4,7 @@ import PatientForm from '@/components/PatientForm'
 import Questionnaire from '@/components/Questionnaire'
 import GaitTest from '@/components/GaitTest'
 import Result from '@/components/Result'
+import Referral from './Referral'
 
 export default function ScreeningFlow() {
   const [step, setStep] = useState('patient')
@@ -29,11 +30,16 @@ export default function ScreeningFlow() {
           onComplete={() => setStep('result')}
         />
       )}
-      {step === 'result' && (
-        <Result
-          patientId={patientId}
-        />
-      )}
+{step === 'result' && (
+  <Result
+    patientId={patientId}
+    onComplete={() => setStep('referral')}
+  />
+)}
+
+{step === 'referral' && (
+  <Referral />
+)}
     </>
   )
 }

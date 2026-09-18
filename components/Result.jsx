@@ -9,7 +9,7 @@ import { useLanguage } from "@/components/LanguageProvider";
 import { questions,answerOptions } from "@/lib/questionnaireData";
 import Link from "next/link";
 
-export default function Result({ patientId }) {
+export default function Result({ patientId, onComplete }) {
   const { t } = useLanguage();
 
   const [patient, setPatient] = useState(null);
@@ -90,22 +90,34 @@ export default function Result({ patientId }) {
   return (
     <div className="mx-auto w-full max-w-2xl px-4 py-6 sm:py-8">
 
-      {/* Action buttons */}
-      <div className="mb-6 flex flex-col gap-3 sm:flex-row print:hidden">
-        <button
-          onClick={() => window.print()}
-          className="flex-1 cursor-pointer rounded-xl border border-gray-300 bg-white px-5 py-3 text-center font-semibold text-gray-700 transition hover:bg-gray-50"
-        >
-          {t("result.printReport")}
-        </button>
 
-        <Link
-          href="/"
-          className="flex-1 cursor-pointer rounded-xl bg-blue-600 px-5 py-3 text-center font-semibold text-white transition hover:bg-blue-700"
-        >
-          {t("result.goHome")}
-        </Link>
-      </div>
+  {/* Action buttons */}
+<div className="mb-6 print:hidden">
+  <div className="flex flex-col gap-3 sm:flex-row">
+    <button
+      onClick={() => window.print()}
+      className="flex-1 cursor-pointer rounded-xl border border-gray-300 bg-white px-5 py-3 text-center font-semibold text-gray-700 transition hover:bg-gray-50"
+    >
+      {t("result.printReport")}
+    </button>
+
+    <Link
+      href="/"
+      className="flex-1 cursor-pointer rounded-xl bg-blue-600 px-5 py-3 text-center font-semibold text-white transition hover:bg-blue-700"
+    >
+      {t("result.goHome")}
+    </Link>
+  </div>
+
+{onComplete && (
+  <button
+    onClick={onComplete}
+    className="mt-3 flex w-full cursor-pointer items-center justify-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white transition hover:bg-blue-700"
+  >
+    {t("result.continueReferral")}
+  </button>
+)}
+</div>
 
       <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
 

@@ -148,7 +148,8 @@
   "disclaimer": "This screening result is intended to support early risk assessment and does not replace clinical diagnosis.",
   "administeredBy": "Administered by",
   "healthcareWorker": "healthcare worker",
-  "viaPlatform": "via OrthoEdge screening platform."
+  "viaPlatform": "via OrthoEdge screening platform.",
+  "continueReferral": "Continue to Referral →"
   },
 
 "risk": {
@@ -264,5 +265,21 @@
     "offlineDescription": "Patient screening data is currently stored locally on this device using offline storage.",
 
     "disclaimer": "OA screening is intended to support early risk assessment and does not replace clinical diagnosis."
-  }
+  },
+    "referral": {
+  "title": "Referral",
+  "findHospital": "Find Hospital",
+  "description": "Find the nearest healthcare facility based on your location.",
+  "useLocation": "Use My Location",
+  "locationDescription": "Allow location access to find the nearest hospital automatically.",
+  "findUsingGPS": "Find Using GPS",
+  "locating": "Finding your location...",
+  "locationNotSupported": "Location services are not supported by this browser.",
+  "locationFailed": "Unable to access your location. You can select your location manually.",
+  "manualSelection": "Select Location Manually",
+  "manualDescription": "If location access is unavailable, select your state and city.",
+  "selectState": "Select State",
+  "selectCity": "Select City",
+  "nearestHospital": "Nearest Hospital"
+}
 }

@@ -1,0 +1,204 @@
+{
+  "hospitals": [
+    {
+      "name": "Gauhati Medical College & Hospital (GMCH)",
+      "state": "Assam",
+      "city": "Guwahati",
+      "type": "Government Medical College Hospital",
+      "latitude": 26.1589,
+      "longitude": 91.7687
+    },
+    {
+      "name": "Assam Medical College & Hospital",
+      "state": "Assam",
+      "city": "Dibrugarh",
+      "type": "Government Medical College Hospital",
+      "latitude": 27.4866,
+      "longitude": 94.9455
+    },
+    {
+      "name": "Nagaon Medical College & Hospital",
+      "state": "Assam",
+      "city": "Nagaon",
+      "type": "Government Medical College Hospital",
+      "latitude": 26.3666,
+      "longitude": 92.7144
+    },
+    {
+      "name": "ESIC Medical College & Hospital, Beltola",
+      "state": "Assam",
+      "city": "Guwahati",
+      "type": "Government (ESI Corporation) Hospital",
+      "latitude": 26.1216,
+      "longitude": 91.8085
+    },
+    {
+      "name": "Central Hospital Maligaon (NFR/Railway)",
+      "state": "Assam",
+      "city": "Guwahati",
+      "type": "Government (Railway) Hospital",
+      "latitude": 26.1519,
+      "longitude": 91.6949
+    },
+    {
+      "name": "Morigaon Civil Hospital",
+      "state": "Assam",
+      "city": "Morigaon",
+      "type": "Government Civil Hospital",
+      "latitude": 26.2521,
+      "longitude": 92.3545
+    },
+    {
+      "name": "Regional Institute of Medical Sciences (RIMS)",
+      "state": "Manipur",
+      "city": "Imphal",
+      "type": "Government (Central) Medical Institute",
+      "latitude": 24.8159,
+      "longitude": 93.9228
+    },
+    {
+      "name": "Jawaharlal Nehru Institute of Medical Sciences (JNIMS)",
+      "state": "Manipur",
+      "city": "Imphal",
+      "type": "Government Medical Institute",
+      "latitude": 24.8101,
+      "longitude": 93.9611
+    },
+    {
+      "name": "Civil Hospital, Shillong",
+      "state": "Meghalaya",
+      "city": "Shillong",
+      "type": "Government Civil Hospital",
+      "latitude": 25.5677,
+      "longitude": 91.8811
+    },
+    {
+      "name": "NEIGRIHMS",
+      "state": "Meghalaya",
+      "city": "Shillong",
+      "type": "Government (Central) Medical Institute",
+      "latitude": 25.5910,
+      "longitude": 91.9405
+    },
+    {
+      "name": "Civil Hospital, Tura",
+      "state": "Meghalaya",
+      "city": "Tura",
+      "type": "Government Civil Hospital",
+      "latitude": 25.5147,
+      "longitude": 90.2037
+    },
+    {
+      "name": "District Hospital Dimapur",
+      "state": "Nagaland",
+      "city": "Dimapur",
+      "type": "Government District Hospital",
+      "latitude": 25.9051,
+      "longitude": 93.7316
+    },
+    {
+      "name": "Naga Hospital Authority",
+      "state": "Nagaland",
+      "city": "Kohima",
+      "type": "Government Hospital",
+      "latitude": 25.6694,
+      "longitude": 94.0959
+    },
+    {
+      "name": "Agartala Government Medical College & G.B. Pant Hospital",
+      "state": "Tripura",
+      "city": "Agartala",
+      "type": "Government Medical College Hospital",
+      "latitude": 23.8604,
+      "longitude": 91.2928
+    },
+    {
+      "name": "District Hospital, North Tripura",
+      "state": "Tripura",
+      "city": "Dharmanagar",
+      "type": "Government District Hospital",
+      "latitude": 24.3899,
+      "longitude": 92.1578
+    },
+    {
+      "name": "Tripura Medical College & Dr. BRAM Hospital",
+      "state": "Tripura",
+      "city": "Agartala",
+      "type": "Government (PPP) Medical College Hospital",
+      "latitude": 23.7848,
+      "longitude": 91.2592
+    },
+    {
+      "name": "Civil Hospital, Aizawl",
+      "state": "Mizoram",
+      "city": "Aizawl",
+      "type": "Government Civil Hospital",
+      "latitude": 23.7323,
+      "longitude": 92.7165
+    },
+    {
+      "name": "Civil Hospital, Lunglei",
+      "state": "Mizoram",
+      "city": "Lunglei",
+      "type": "Government Civil Hospital",
+      "latitude": 22.8868,
+      "longitude": 92.7438
+    },
+    {
+      "name": "Khando Drowa Sangmo District Hospital",
+      "state": "Arunachal Pradesh",
+      "city": "Tawang",
+      "type": "Government District Hospital",
+      "latitude": 27.5890,
+      "longitude": 91.8648
+    },
+    {
+      "name": "Zonal General Hospital",
+      "state": "Arunachal Pradesh",
+      "city": "Tezu",
+      "type": "Government General Hospital",
+      "latitude": 27.9281,
+      "longitude": 96.1578
+    },
+    {
+      "name": "General Hospital, Aalo",
+      "state": "Arunachal Pradesh",
+      "city": "Aalo",
+      "type": "Government General Hospital",
+      "latitude": 28.1690,
+      "longitude": 94.8010
+    },
+    {
+      "name": "Tomo Riba Institute of Health & Medical Sciences",
+      "state": "Arunachal Pradesh",
+      "city": "Naharlagun",
+      "type": "Government Medical Institute",
+      "latitude": 27.1040,
+      "longitude": 93.6911
+    },
+    {
+      "name": "STNM Hospital",
+      "state": "Sikkim",
+      "city": "Gangtok",
+      "type": "Government Hospital",
+      "latitude": 27.3449,
+      "longitude": 88.6038
+    },
+    {
+      "name": "Central Referral Hospital (SMIMS)",
+      "state": "Sikkim",
+      "city": "Gangtok",
+      "type": "Government-affiliated Teaching Hospital",
+      "latitude": 27.3162,
+      "longitude": 88.5973
+    },
+    {
+      "name": "District Hospital, Namchi",
+      "state": "Sikkim",
+      "city": "Namchi",
+      "type": "Government District Hospital",
+      "latitude": 27.1613,
+      "longitude": 88.3581
+    }
+  ]
+}
