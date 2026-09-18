@@ -6,6 +6,7 @@ import { combineRisk } from "@/lib/combinedRisk";
 import RiskResultCard from "@/components/RiskResultCard";
 import { useUser } from "@clerk/nextjs";
 import { useLanguage } from "@/components/LanguageProvider";
+import { questions,answerOptions } from "@/lib/questionnaireData";
 import Link from "next/link";
 
 export default function Result({ patientId }) {
@@ -177,6 +178,38 @@ export default function Result({ patientId }) {
 
           </dl>
         </div>
+
+        {/* Questionnaire Responses */}
+<div className="border-b border-gray-200 px-6 py-5">
+  <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-500">
+    {t("result.questionnaireResponses")}
+  </h2>
+
+  <div className="space-y-4">
+    {questions.map((question, index) => {
+      const value =
+        patient.questionnaireAnswers?.[question.group]?.[question.id];
+
+      return (
+        <div
+          key={question.id}
+          className="rounded-xl border border-gray-200 bg-gray-50 p-4"
+        >
+          <p className="text-sm leading-6 text-gray-800">
+            <span className="font-semibold">{index + 1}. </span>
+            {t(question.questionKey)}
+          </p>
+
+          <p className="mt-2 text-sm font-semibold text-blue-700">
+            {value !== undefined
+              ? `${t(answerOptions[value].labelKey)}`
+              : "—"}
+          </p>
+        </div>
+      );
+    })}
+  </div>
+</div>
 
         {/* Assessment */}
         <div className="px-6 py-5">
