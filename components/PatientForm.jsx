@@ -20,6 +20,10 @@ export default function PatientForm({ onComplete }) {
     height: "",
     abhaNumber: "",
   });
+    const [consent, setConsent] = useState({
+    dataCollection: false,
+    storageSync: false,
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,6 +52,8 @@ export default function PatientForm({ onComplete }) {
   }, [formData.weight, formData.height]);
 
   const isFormComplete =
+      consent.dataCollection &&
+    consent.storageSync &&
     formData.name.trim() &&
     formData.age &&
     formData.gender &&
@@ -68,6 +74,11 @@ export default function PatientForm({ onComplete }) {
         height: Number(formData.height),
         bmi: Number(bmi),
         abhaNumber: formData.abhaNumber.trim(),
+        consent: {
+          dataCollection: consent.dataCollection,
+          storageSync: consent.storageSync,
+          givenAt: new Date().toISOString(),
+        },
       });
 
       console.log("Patient created:", newId);
@@ -93,6 +104,42 @@ export default function PatientForm({ onComplete }) {
       </div>
 
       <div className="space-y-5">
+              {/* Consent */}
+        <div className="rounded-xl border border-blue-100 bg-blue-50 p-4">
+          <p className="mb-3 text-sm font-semibold text-gray-900">
+            {t("consent.title")}
+          </p>
+
+          <label className="flex items-start gap-3 text-sm text-gray-700">
+            <input
+              type="checkbox"
+              checked={consent.dataCollection}
+              onChange={(e) =>
+                setConsent((prev) => ({
+                  ...prev,
+                  dataCollection: e.target.checked,
+                }))
+              }
+              className="cursor-pointer mt-0.5 h-4 w-4 shrink-0 rounded border-gray-300 accent-blue-600"
+            />
+            <span>{t("consent.dataCollection")}</span>
+          </label>
+
+          <label className="mt-3 flex items-start gap-3 text-sm text-gray-700">
+            <input
+              type="checkbox"
+              checked={consent.storageSync}
+              onChange={(e) =>
+                setConsent((prev) => ({
+                  ...prev,
+                  storageSync: e.target.checked,
+                }))
+              }
+              className=" cursor-pointer mt-0.5 h-4 w-4 shrink-0 rounded border-gray-300 accent-blue-600"
+            />
+            <span>{t("consent.storageSync")}</span>
+          </label>
+        </div>
 
         {/* Name */}
         <div>

@@ -288,6 +288,11 @@
   "selectState": "Select State",
   "selectCity": "Select City",
   "nearestHospital": "Nearest Hospital"
+},
+"consent": {
+  "title": "Patient consent",
+  "dataCollection": "The patient has been informed and agrees to their personal and health information being collected for osteoarthritis screening.",
+  "storageSync": "The patient agrees to this information being stored on this device and synced to the secure cloud database."
 }
 
 }

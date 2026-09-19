@@ -41,6 +41,27 @@ export async function POST(request) {
   if (Number.isNaN(ts.getTime())) {
     return NextResponse.json({ error: "Invalid timestamp" }, { status: 400 });
   }
+    // Consent: optional (older records have none), but must be well-formed if present
+  let consent = null;
+  if (p.consent !== null && p.consent !== undefined) {
+    const c = p.consent;
+    if (
+      typeof c !== "object" ||
+      typeof c.dataCollection !== "boolean" ||
+      typeof c.storageSync !== "boolean"
+    ) {
+      return NextResponse.json({ error: "Invalid consent" }, { status: 400 });
+    }
+    const givenAt = new Date(c.givenAt);
+    if (Number.isNaN(givenAt.getTime())) {
+      return NextResponse.json({ error: "Invalid consent date" }, { status: 400 });
+    }
+    consent = {
+      dataCollection: c.dataCollection,
+      storageSync: c.storageSync,
+      givenAt: givenAt.toISOString(),
+    };
+  }
 
   // Don't let an older offline record overwrite a newer cloud record.
   const { data: existing, error: readError } = await supabaseAdmin
@@ -74,6 +95,7 @@ export async function POST(request) {
       gait_score: p.gaitScore ?? null,
       combined_score: p.combinedScore ?? null,
       timestamp: ts.toISOString(),
+      consent,
       synced_at: new Date().toISOString(),
     },
     { onConflict: "abha_number" },
