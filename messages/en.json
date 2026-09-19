@@ -258,6 +258,8 @@
     "today": "Today",
     "patientsScreened": "Patients Screened",
     "patients": "patients",
+    "heroSubtitle": "Offline-first knee osteoarthritis screening, combining symptom scoring with gait analysis.",
+"kneeAlt": "Illustration of a knee with a wearable gait sensor brace",
 
     "status": "Status",
     "time": "Time",
