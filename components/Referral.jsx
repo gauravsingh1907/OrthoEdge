@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
 import referralData from "@/lib/referralData.json";
+import Link from "next/link";
 
 function calculateDistance(lat1, lon1, lat2, lon2) {
   const R = 6371;
@@ -118,6 +119,13 @@ function getCurrentLocation() {
 
   return (
     <div className="mx-auto w-full max-w-2xl px-4 py-6 sm:py-8">
+      <Link
+  href="/"
+  className="mb-5 inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm transition hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700"
+>
+  <span aria-hidden="true">←</span>
+  {t("result.goHome")}
+</Link>
       <div className="mb-6">
         <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">
           {t("referral.title")}

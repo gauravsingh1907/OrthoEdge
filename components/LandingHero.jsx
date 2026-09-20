@@ -80,16 +80,16 @@ export default function LandingHero() {
           variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
           className="max-w-xl py-8 min-[1032px]:py-0"
         >
-          <motion.h1
-            variants={fadeUp}
-            className="text-5xl font-black uppercase leading-[1.05] tracking-tight text-[#0B1F4B] sm:text-6xl xl:text-7xl"
-          >
-            Precision.
-            <br />
-            Motion.
-            <br />
-            Mobility.
-          </motion.h1>
+<motion.h1
+  variants={fadeUp}
+  className="text-4xl font-black uppercase leading-[1.05] tracking-tight text-[#0B1F4B] sm:text-5xl xl:text-6xl"
+>
+  Precision.
+  <br />
+  Motion.
+  <br />
+  Mobility.
+</motion.h1>
 
           <motion.p
             variants={fadeUp}
