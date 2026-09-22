@@ -22,7 +22,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   return R * c;
 }
 
-export default function Referral() {
+export default function Referral({ onContinueScreening }) {
   const { t } = useLanguage();
 
   const [status, setStatus] = useState("idle");
@@ -62,45 +62,45 @@ export default function Referral() {
     setNearestHospital(hospitalsWithDistance[0]);
   }
 
-function getCurrentLocation() {
-  setError("");
-  setStatus("locating");
+  function getCurrentLocation() {
+    setError("");
+    setStatus("locating");
 
-  if (!navigator.geolocation) {
-    setStatus("error");
-    setError(t("referral.locationNotSupported"));
-    return;
-  }
-
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      const { latitude, longitude } = position.coords;
-
-      findNearestHospital(latitude, longitude);
-
-      setError("");
-      setStatus("success");
-    },
-    (error) => {
-      console.log("GPS error:", error);
-
+    if (!navigator.geolocation) {
       setStatus("error");
-
-      if (error.code === 1) {
-        setError(t("referral.locationFailed"));
-      } else if (error.code === 2) {
-        setError(t("referral.locationFailed"));
-      } else if (error.code === 3) {
-        setError(t("referral.locationFailed"));
-      }
-    },
-    {
-      enableHighAccuracy: true,
-      timeout: 30000,
-      maximumAge: 0,
+      setError(t("referral.locationNotSupported"));
+      return;
     }
-  );
-}
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+
+        findNearestHospital(latitude, longitude);
+
+        setError("");
+        setStatus("success");
+      },
+      (error) => {
+        console.log("GPS error:", error);
+
+        setStatus("error");
+
+        if (error.code === 1) {
+          setError(t("referral.locationFailed"));
+        } else if (error.code === 2) {
+          setError(t("referral.locationFailed"));
+        } else if (error.code === 3) {
+          setError(t("referral.locationFailed"));
+        }
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 30000,
+        maximumAge: 0,
+      },
+    );
+  }
 
   function handleManualSearch() {
     if (!selectedState || !selectedCity) return;
@@ -119,13 +119,24 @@ function getCurrentLocation() {
 
   return (
     <div className="mx-auto w-full max-w-2xl px-4 py-6 sm:py-8">
-      <Link
-  href="/"
-  className="mb-5 inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm transition hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700"
->
-  <span aria-hidden="true">←</span>
-  {t("result.goHome")}
-</Link>
+      <div className="mb-5 flex flex-col gap-3 sm:flex-row">
+        <Link
+          href="/"
+          className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm transition hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700"
+        >
+          <span aria-hidden="true">←</span>
+          {t("result.goHome")}
+        </Link>
+
+        {onContinueScreening && (
+          <button
+            onClick={onContinueScreening}
+            className="inline-flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border border-blue-600 bg-white px-4 py-2 text-sm font-semibold text-blue-600 shadow-sm transition hover:bg-blue-50"
+          >
+            {t("referral.continueScreening")}
+          </button>
+        )}
+      </div>
       <div className="mb-6">
         <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">
           {t("referral.title")}

@@ -9,7 +9,7 @@ import { useLanguage } from "@/components/LanguageProvider";
 import { questions, answerOptions } from "@/lib/questionnaireData";
 import Link from "next/link";
 
-export default function Result({ patientId, onComplete }) {
+export default function Result({ patientId, onComplete, onContinueScreening }) {
   const { t } = useLanguage();
 
   const [patient, setPatient] = useState(null);
@@ -118,6 +118,14 @@ const recommendationKey = {
             className="mt-3 flex w-full cursor-pointer items-center justify-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white transition hover:bg-blue-700"
           >
             {t("result.continueReferral")}
+          </button>
+        )}
+                {onContinueScreening && (
+          <button
+            onClick={onContinueScreening}
+            className="mt-3 flex w-full cursor-pointer items-center justify-center rounded-xl border border-blue-600 bg-white px-5 py-3 font-semibold text-blue-600 transition hover:bg-blue-50"
+          >
+            {t("result.continueScreening")}
           </button>
         )}
       </div>
