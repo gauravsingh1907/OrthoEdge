@@ -83,7 +83,7 @@ export default function Dashboard({
               type="button"
               onClick={() => changeLanguage(language === "en" ? "hi" : "en")}
               aria-label={t("language.select")}
-              className="rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-semibold text-slate-100 transition hover:bg-white/10"
+              className="rounded-lg border cursor-pointer border-white/20 bg-white/10 px-3 py-1.5 text-sm font-semibold text-slate-100 transition hover:bg-white/10"
             >
               {language === "en" ? "हिन्दी" : "English"}
             </button>
@@ -91,7 +91,7 @@ export default function Dashboard({
             <button
               onClick={handleSync}
               disabled={syncing}
-              className="rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-semibold text-slate-100 transition hover:bg-white/10 disabled:opacity-50"
+              className="rounded-lg border cursor-pointer border-white/20 bg-white/10 px-3 py-1.5 text-sm font-semibold text-slate-100 transition hover:bg-white/10 disabled:opacity-50"
             >
               {syncing ? t("sync.syncing") : t("sync.syncData")}
             </button>
