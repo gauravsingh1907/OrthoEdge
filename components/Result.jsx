@@ -185,8 +185,26 @@ const recommendationKey = {
           </dl>
         </div>
 
-        {/* Questionnaire Responses */}
+        {/* Assessment */}
         <div className="border-b border-gray-200 px-6 py-5">
+          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
+            {t("result.riskAssessment")}
+          </h2>
+
+          <RiskResultCard scores={result} />
+          <div className="mt-5 rounded-xl border border-blue-200 bg-blue-50 px-5 py-4">
+            <p className="text-sm font-semibold text-blue-900">
+              {t("result.recommendationTitle")}
+            </p>
+
+            <p className="mt-1 text-sm leading-6 text-blue-800">
+              {t(recommendationKey)}
+            </p>
+          </div>
+        </div>
+
+        {/* Questionnaire Responses */}
+        <div className="px-6 py-5">
           <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gray-500">
             {t("result.questionnaireResponses")}
           </h2>
@@ -217,23 +235,7 @@ const recommendationKey = {
           </div>
         </div>
 
-        {/* Assessment */}
-        <div className="px-6 py-5">
-          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500">
-            {t("result.riskAssessment")}
-          </h2>
 
-          <RiskResultCard scores={result} />
-        <div className="mt-5 rounded-xl border border-blue-200 bg-blue-50 px-5 py-4">
-          <p className="text-sm font-semibold text-blue-900">
-            {t("result.recommendationTitle")}
-          </p>
-
-          <p className="mt-1 text-sm leading-6 text-blue-800">
-            {t(recommendationKey)}
-          </p>
-        </div>
-        </div>
 
         {/* Footer disclaimer */}
         <div className="border-t border-gray-200 bg-gray-50 px-6 py-3 print:bg-white">

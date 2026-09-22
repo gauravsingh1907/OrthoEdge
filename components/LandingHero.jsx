@@ -72,24 +72,23 @@ export default function LandingHero() {
       </header>
 
       {/* Main grid */}
-            <div className="relative z-10 mx-auto grid min-h-[calc(100vh-80px)] max-w-7xl grid-cols-1 items-center gap-8 px-4 pb-12 sm:px-8 min-[1032px]:h-[calc(100vh-80px)] min-[1032px]:grid-cols-2">
-        {/* Left: text */}
-        <motion.div
+
+<div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-4 px-4 pb-12 pt-4 sm:px-8 min-h-[calc(100vh-80px)] min-[1032px]:h-[calc(100vh-80px)] min-[1032px]:min-h-0 min-[1032px]:grid-cols-2 min-[1032px]:gap-8 min-[1032px]:pt-0">        <motion.div
           initial="hidden"
           animate="visible"
           variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-          className="max-w-xl py-8 min-[1032px]:py-0"
+          className="order-2 max-w-xl min-[1032px]:order-1 min-[1032px]:py-0"
         >
-<motion.h1
-  variants={fadeUp}
-  className="text-4xl font-black uppercase leading-[1.05] tracking-tight text-[#0B1F4B] sm:text-5xl xl:text-6xl"
->
-  Precision.
-  <br />
-  Motion.
-  <br />
-  Mobility.
-</motion.h1>
+          <motion.h1
+            variants={fadeUp}
+            className="text-4xl font-black uppercase leading-[1.05] tracking-tight text-[#0B1F4B] sm:text-5xl xl:text-6xl"
+          >
+            Precision.
+            <br />
+            Motion.
+            <br />
+            Mobility.
+          </motion.h1>
 
           <motion.p
             variants={fadeUp}
@@ -118,27 +117,30 @@ export default function LandingHero() {
           </motion.div>
         </motion.div>
 
-        {/* Right: knee hologram (desktop only) */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative hidden items-center justify-center min-[1032px]:flex"
-        >
-          {/* Glow behind the knee */}
-          <div className="pointer-events-none absolute h-72 w-72 rounded-full bg-amber-500/25 blur-3xl sm:h-96 sm:w-96" />
-          <div className="pointer-events-none absolute h-64 w-64 rounded-full bg-cyan-400/20 blur-3xl" />
+        {/* Knee hologram: shown above text on mobile, right column on desktop */}
+<motion.div
+  initial={{ opacity: 0, scale: 0.95 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.6, delay: 0.2 }}
+  className="relative order-1 flex items-center justify-center min-[1032px]:order-2"
+>
+  {/* Dark backdrop patch so the glow actually shows on mobile's light bg */}
+  <div className="pointer-events-none absolute h-64 w-64 rounded-full bg-[#0B132B]/40 blur-2xl sm:h-80 sm:w-80 min-[1032px]:hidden" />
 
-                    <Image
-            src="/assets/knee.png"
-            alt={t("home.kneeAlt")}
-            width={800}
-            height={1200}
-            loading="eager"
-            sizes="480px"
-            className="relative z-10 h-[62vh] max-h-180 w-auto max-w-none"
-          />
-        </motion.div>
+  {/* Glow behind the knee */}
+  <div className="pointer-events-none absolute h-64 w-64 rounded-full bg-amber-500/40 blur-3xl sm:h-80 sm:w-80 min-[1032px]:h-96 min-[1032px]:w-96 min-[1032px]:bg-amber-500/25" />
+  <div className="pointer-events-none absolute h-56 w-56 rounded-full bg-cyan-400/30 blur-3xl sm:h-72 sm:w-72 min-[1032px]:bg-cyan-400/20" />
+
+  <Image
+    src="/assets/knee.png"
+    alt={t("home.kneeAlt")}
+    width={800}
+    height={1200}
+    loading="eager"
+    sizes="(max-width: 1031px) 70vw, 480px"
+    className="relative z-10 h-72 w-auto max-w-none sm:h-80 min-[1032px]:h-[62vh] min-[1032px]:max-h-180"
+  />
+</motion.div>
       </div>
     </section>
   );
