@@ -83,36 +83,31 @@
   "ready": "Ready for gait assessment",
   "readyDescription": "The movement sensor will record walking patterns to identify gait-related risk markers.",
 
-  "beforeStarting": "Before starting",
-
-  "fitSensor": "Fit the sensor",
-  "fitSensorDescription": "Secure the knee sensor correctly before starting.",
-
-  "checkConnection": "Check connection",
-  "checkConnectionDescription": "The system will establish the sensor connection.",
-
-  "walkNormally": "Walk normally",
-  "walkNormallyDescription": "Maintain your normal walking pace during recording.",
+  "sensorOne": "Sensor 1 · Thigh & shank",
+  "sensorOneDescription": "OrthoEdge unit on the affected leg.",
+  "sensorTwo": "Sensor 2 · Coming soon",
+  "sensorTwoDescription": "Second leg tracking will connect here.",
 
   "start": "Start Gait Assessment",
   "sensorReminder": "Ensure the sensor is fitted correctly before continuing.",
 
+  "bleUnsupported": "This browser doesn't support Bluetooth. Try Chrome on Android or desktop.",
+  "connectFailed": "Couldn't connect to the sensor. Try again.",
+  "connectionLost": "Connection lost. Test stopped.",
+
   "deviceSetup": "Device setup",
   "connecting": "Connecting to sensor",
   "connectingDescription": "Establishing a connection with the knee movement sensor. Please remain ready for the assessment.",
-  "sensorStatus": "Sensor status",
 
   "recordingInProgress": "RECORDING IN PROGRESS",
+  "walkNormally": "Walk normally",
   "recordingDescription": "Maintain a natural walking pace while the sensor records your movement.",
   "recordingProgress": "Recording progress",
-  "seconds": "sec",
+  "windowsProcessed": "Windows processed",
 
   "completed": "Assessment completed",
   "analysisComplete": "Gait analysis complete",
-  "completeDescription": "Movement data has been recorded successfully. Preparing the final screening result.",
-
-  "dataSaved": "Data saved",
-  "dataSavedDescription": "Gait assessment stored successfully",
+  "igriScore": "IGRI score",
 
   "footer": "OA Screening System · Gait Movement Assessment"
 },
