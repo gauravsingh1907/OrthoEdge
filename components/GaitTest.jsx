@@ -11,7 +11,7 @@ const CHARACTERISTIC_UUID = "beb5483e-36e1-4688-b7f5-ea07361b26a8";
 const TEST_DURATION_S = 60;
 const SMOOTH_WINDOW = 5;
 
-const RIGHT_DEVICE_NAME = "OrthoEdge";
+const RIGHT_DEVICE_NAME = "OrthoEdge-Right";
 const LEFT_DEVICE_NAME = "OrthoEdge-Left";
 
 function createLegState() {
