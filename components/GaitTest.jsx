@@ -30,14 +30,10 @@ export default function GaitTest({ patientId, onComplete }) {
   const [right, setRight] = useState(createLegState());
   const [left, setLeft] = useState(createLegState());
 
-  // "right" | "left" | "both"
+
   const [testMode, setTestMode] = useState(null);
 
   const [saved, setSaved] = useState(false);
-
-  // --------------------------------------------------
-  // Refs
-  // --------------------------------------------------
 
   const rightRef = useRef(right);
   const leftRef = useRef(left);
@@ -218,45 +214,43 @@ export default function GaitTest({ patientId, onComplete }) {
    * The UI will NOT show the walking screen until both
    * sensors are connected/ready.
    */
-  const handleStartBoth = async () => {
-    setTestMode("both");
+const handleStartBoth = async () => {
+  setTestMode("both");
 
-    /*
-     * We intentionally connect RIGHT first.
-     *
-     * After the browser's Bluetooth picker finishes,
-     * we ask for the LEFT sensor.
-     */
-    const rightConnected = await connectLeg({
-      deviceName: RIGHT_DEVICE_NAME,
-      setLegState: setRight,
-      legRef: rightRef,
-      deviceRef: rightDeviceRef,
-      charRef: rightCharRef,
-      angleHistoryRef: rightAngleHistoryRef,
-      decoderRef: rightDecoderRef,
-    });
+  const rightConnected = await connectLeg({
+    deviceName: RIGHT_DEVICE_NAME,
+    setLegState: setRight,
+    legRef: rightRef,
+    deviceRef: rightDeviceRef,
+    charRef: rightCharRef,
+    angleHistoryRef: rightAngleHistoryRef,
+    decoderRef: rightDecoderRef,
+  });
 
-    if (!rightConnected) {
-      return;
+  if (!rightConnected) {
+    return;
+  }
+
+  const leftConnected = await connectLeg({
+    deviceName: LEFT_DEVICE_NAME,
+    setLegState: setLeft,
+    legRef: leftRef,
+    deviceRef: leftDeviceRef,
+    charRef: leftCharRef,
+    angleHistoryRef: leftAngleHistoryRef,
+    decoderRef: leftDecoderRef,
+  });
+
+  if (!leftConnected) {
+    if (rightDeviceRef.current?.gatt?.connected) {
+      rightDeviceRef.current.gatt.disconnect();
     }
 
-    /*
-     * Small delay so the right ESP can establish its
-     * connection cleanly before requesting the second one.
-     */
-    setTimeout(() => {
-      connectLeg({
-        deviceName: LEFT_DEVICE_NAME,
-        setLegState: setLeft,
-        legRef: leftRef,
-        deviceRef: leftDeviceRef,
-        charRef: leftCharRef,
-        angleHistoryRef: leftAngleHistoryRef,
-        decoderRef: leftDecoderRef,
-      });
-    }, 300);
-  };
+    setRight(createLegState());
+    setLeft(createLegState());
+    setTestMode(null);
+  }
+};
 
   // --------------------------------------------------
   // Parse incoming BLE data
