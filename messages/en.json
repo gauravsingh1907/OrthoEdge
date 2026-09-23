@@ -74,43 +74,68 @@
     "instruction": "Select the response that best describes the patient's current condition."
   },
 
+
+
+
   "gait": {
-    "title": "Gait Assessment",
-    "subtitle": "Knee movement and gait screening",
     "assessment": "Assessment",
+    "title": "Gait Assessment",
+    "subtitle": "Analyze knee movement and gait patterns using OrthoEdge sensors.",
     "assessmentProgress": "Assessment progress",
 
     "ready": "Ready for gait assessment",
-    "readyDescription": "The movement sensor will record walking patterns to identify gait-related risk markers.",
-
-    "sensorOne": "Sensor 1 · Thigh & shank",
-    "sensorOneDescription": "OrthoEdge unit on the affected leg.",
-    "sensorTwo": "Sensor 2 · Coming soon",
-    "sensorTwoDescription": "Second leg tracking will connect here.",
-
-    "start": "Start Gait Assessment",
-    "sensorReminder": "Ensure the sensor is fitted correctly before continuing.",
-
-    "bleUnsupported": "This browser doesn't support Bluetooth. Try Chrome on Android or desktop.",
-    "connectFailed": "Couldn't connect to the sensor. Try again.",
-    "connectionLost": "Connection lost. Test stopped.",
+    "readyDescription": "Connect the OrthoEdge sensor to begin the gait assessment. Walk normally during the test.",
+    "sensorReminder": "Make sure the OrthoEdge sensor is securely attached before starting.",
 
     "deviceSetup": "Device setup",
-    "connecting": "Connecting to sensor",
-    "connectingDescription": "Establishing a connection with the knee movement sensor. Please remain ready for the assessment.",
+    "connecting": "Connecting to sensor...",
+    "waitingForOtherSensor": "Almost there",
+    "waitingTitle": "Waiting for the other sensor...",
+    "waitingDescription": "One sensor is already connected. Connect the other sensor to start the bilateral gait display.",
 
-    "recordingInProgress": "RECORDING IN PROGRESS",
+    "recordingInProgress": "Recording in progress",
     "walkNormally": "Walk normally",
-    "recordingDescription": "Maintain a natural walking pace while the sensor records your movement.",
-    "recordingProgress": "Recording progress",
-    "windowsProcessed": "Windows processed",
+    "bothSensorsMonitored": "Both leg sensors are being monitored.",
 
     "completed": "Assessment completed",
     "analysisComplete": "Gait analysis complete",
-    "igriScore": "IGRI score",
 
-    "footer": "OA Screening System · Gait Movement Assessment"
-  },
+    "bilateralSymmetry": "Bilateral Symmetry",
+    "energyAsymmetry": "Energy asymmetry",
+    "jerkAsymmetry": "Jerk asymmetry",
+
+    "rightLeg": "Right leg",
+    "leftLeg": "Left leg",
+    "bothLegs": "Both legs",
+
+    "startRight": "Start with Right Leg",
+    "startLeft": "Start with Left Leg",
+    "startBoth": "Start with Both Legs",
+
+    "bothLegsInfo": "Connect both OrthoEdge sensors when prompted. The walking screen will appear after both sensors are connected.",
+
+    "simulate": "Simulate Gait Test",
+
+    "seconds": "seconds",
+    "windows": "windows",
+    "healthy": "healthy",
+    "moderate": "moderate",
+    "atRisk": "at-risk",
+
+    "iGRI": "IGRI",
+    "ml": "ML",
+    "consistency": "Consistency",
+    "coordination": "Coordination",
+
+    "bleUnsupported": "This browser doesn't support Bluetooth.",
+    "connectionLost": "Connection lost. Test stopped.",
+    "connectFailed": "Couldn't connect to the sensor. Try again.",
+
+    "footer": "OrthoEdge gait assessment uses sensor-based movement analysis."
+  
+},
+
+
 
   "result": {
     "title": "Screening Result",
@@ -153,7 +178,12 @@
     "recommendationMild": "Consider lifestyle adjustments and follow-up if symptoms persist.",
     "recommendationModerate": "Consider evaluation by a healthcare professional.",
 
-    "recommendationSevere": "Referral to a healthcare professional is recommended for further evaluation."
+    "recommendationSevere": "Referral to a healthcare professional is recommended for further evaluation.",
+    "gaitAnalysis": "Gait Analysis",
+"rightLegIgri": "Right Leg IGRI",
+"leftLegIgri": "Left Leg IGRI",
+"energyAsymmetry": "Energy Asymmetry",
+"jerkAsymmetry": "Jerk Asymmetry"
   },
 
   "risk": {

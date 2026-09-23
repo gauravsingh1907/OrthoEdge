@@ -201,7 +201,58 @@ const recommendationKey = {
               {t(recommendationKey)}
             </p>
           </div>
-        </div>
+        <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 px-5 py-4">
+  <h3 className="text-sm font-semibold text-slate-900">
+    {t("result.gaitAnalysis")}
+  </h3>
+
+  <div className="mt-3 grid grid-cols-2 gap-3">
+    <div>
+      <p className="text-xs text-slate-500">
+        {t("result.rightLegIgri")}
+      </p>
+      <p className="mt-1 text-lg font-semibold text-slate-900">
+        {patient.gaitRightIgri != null
+          ? Math.round(patient.gaitRightIgri)
+          : "—"}
+      </p>
+    </div>
+
+    <div>
+      <p className="text-xs text-slate-500">
+        {t("result.leftLegIgri")}
+      </p>
+      <p className="mt-1 text-lg font-semibold text-slate-900">
+        {patient.gaitLeftIgri != null
+          ? Math.round(patient.gaitLeftIgri)
+          : "—"}
+      </p>
+    </div>
+
+    <div>
+      <p className="text-xs text-slate-500">
+        {t("result.energyAsymmetry")}
+      </p>
+      <p className="mt-1 text-lg font-semibold text-slate-900">
+        {patient.gaitBsiEnergy != null
+          ? `${patient.gaitBsiEnergy.toFixed(1)}%`
+          : "—"}
+      </p>
+    </div>
+
+    <div>
+      <p className="text-xs text-slate-500">
+        {t("result.jerkAsymmetry")}
+      </p>
+      <p className="mt-1 text-lg font-semibold text-slate-900">
+        {patient.gaitBsiJerk != null
+          ? `${patient.gaitBsiJerk.toFixed(1)}%`
+          : "—"}
+      </p>
+    </div>
+  </div>
+</div>
+          </div>
 
         {/* Questionnaire Responses */}
         <div className="px-6 py-5">
