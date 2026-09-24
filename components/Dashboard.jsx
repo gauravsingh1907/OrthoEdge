@@ -62,7 +62,7 @@ export default function Dashboard({
             />
 
             <div className="min-w-0">
-              <span className="block truncate text-lg font-bold text-white">
+              <span className="hidden md:block truncate text-lg font-bold text-white">
                 OrthoEdge
               </span>
 
