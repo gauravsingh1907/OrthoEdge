@@ -1,0 +1,334 @@
+{
+  "common": {
+    "english": "इंग्रेजी",
+    "hindi": "हिन्दी",
+    "save": "सेभ खालाम",
+    "cancel": "बातिल खालाम",
+    "continue": "सोलाय हो",
+    "back": "उनाव",
+    "next": "उनावनि",
+    "submit": "जमा खालाम",
+    "print": "प्रिन्ट खालाम",
+    "close": "बन्द खालाम",
+    "loading": "लोड जाबाय...",
+    "yes": "हय",
+    "no": "नङा"
+  },
+
+  "language": {
+    "select": "राव",
+    "english": "इंग्रेजी",
+    "hindi": "हिन्दी"
+  },
+
+"patient": {
+  "title": "सोरोगियारनि फोरमायथि",
+  "description": "गाहायाव सोरोगियारनि फोरमायथिफोर लिर।",
+  "name": "मुं",
+  "namePlaceholder": "सोरोगियारनि मुं लिर",
+  "age": "बोसोर",
+  "agePlaceholder": "बोसोर लिर",
+  "gender": "हिन्जाव-आजला",
+  "selectGender": "हिन्जाव-आजला सायख",
+  "weight": "ओंखार",
+  "weightPlaceholder": "जेरै: 70",
+  "height": "गोजौ",
+  "heightPlaceholder": "जेरै: 170",
+  "bmi": "BMI",
+  "abhaNumber": "ABHA नम्बर",
+  "abhaPlaceholder": "14-संख्यायाव ABHA नम्बर",
+  "male": "आजला",
+  "female": "हिन्जाव",
+  "other": "गुबुन"
+},
+
+  "questionnaire": {
+    "title": "सोंथिनि फाराम",
+    "pain": "दुखु",
+    "stiffness": "खारजों",
+    "physicalFunction": "शारिरिक खामानि",
+    "none": "जेबो नङा",
+    "mild": "फिसा",
+    "moderate": "माझारी",
+    "severe": "गोरलै",
+    "extreme": "जोबोद गोरलै",
+
+    "questions": {
+      "painWalkingFlat": "समतल जायगायाव हाबनो समाव माबोरै दुखु मोनो?",
+      "painStairs": "सिढी जाबा सोनो एबा ओंखारनो समाव माबोरै दुखु मोनो?",
+      "painNight": "रातियाव खाटियाव दं समाव माबोरै दुखु मोनो?",
+      "painSittingLying": "आसनो एबा जुरनो समाव माबोरै दुखु मोनो?",
+      "painStanding": "खारनो समाव माबोरै दुखु मोनो?",
+      "stiffnessMorning": "फुंनाय समाव जागाय जाखांनायनि उनाव जोंनि गाथि माबोरै खारजों जायो?",
+      "stiffnessLaterDay": "आसन एबा आरामनि उनाव दिननि उनावनि समाव गाथिफोर माबोरै खारजों जायो?",
+      "functionDownStairs": "सिढी सोनो समाव माबोरै जेंना जायो?",
+      "functionUpStairs": "सिढी जाबा समाव माबोरै जेंना जायो?",
+      "functionRising": "आसननि निफ्राय फैनो समाव माबोरै जेंना जायो?",
+      "functionStanding": "खारनो समाव माबोरै जेंना जायो?",
+      "functionBending": "सोमोन्ना खालामनो समाव माबोरै जेंना जायो?",
+      "functionWalking": "समतल जायगायाव हाबनो समाव माबोरै जेंना जायो?",
+      "functionVehicle": "गाडियाव जाबा एबा गाडिनिफ्राय ओंखारनो समाव माबोरै जेंना जायो?",
+      "functionHeavyWork": "गोरलै नखरनि खामानि एबा फार्मनि खामानि खालामनो समाव माबोरै जेंना जायो?",
+      "functionBed": "खाटियाव जाबा एबा खाटिनिफ्राय ओंखारनो समाव माबोरै जेंना जायो?",
+      "functionSquatting": "उकुरि जानो समाव माबोरै जेंना जायो?"
+    },
+
+    "instruction": "सोरोगियारनि दानि अबस्थानखौ साबसिन फोरमायनाय उत्तरखौ सायख।"
+  },
+
+  "gait": {
+    "assessment": "जांच",
+    "title": "हाबानि जांच",
+    "subtitle": "OrthoEdge सेंसरजों जानानि जेंना आरो हाबानि फारागखौ नायबिजिर।",
+    "assessmentProgress": "जांचनि जौगानाय",
+
+    "ready": "हाबानि जांचनि थाखाय थियार",
+    "readyDescription": "हाबानि जांच जागायनो OrthoEdge सेंसरखौ जोड। टेस्टनि समाव थारै हाब।",
+    "sensorReminder": "जागायनायनि सिगां OrthoEdge सेंसरखौ मोजाङै बांधि दं नामा नाय।",
+
+    "deviceSetup": "डिभाइस सेटअप",
+    "connecting": "सेंसरजों जोगाजोग जाबाय...",
+    "waitingForOtherSensor": "आबुं फोजोबनायनि नाजाव",
+    "waitingTitle": "गुबुन सेंसरनि थाखाय नाजाबाय...",
+    "waitingDescription": "मोनसे सेंसर जोगाजोग जाबाय। गिबि जानानि हाबा डिस्प्ले जागायनो गुबुन सेंसरखौ जोगाजोग खालाम।",
+
+    "recordingInProgress": "रेकर्ड खालामबाय",
+    "walkNormally": "थारै हाब",
+    "bothSensorsMonitored": "फिसायावनि आरो फिसायावनि सेंसरफोरखौ नायबिजिरबाय।",
+
+    "completed": "जांच फोजोबबाय",
+    "analysisComplete": "हाबानि नायबिजिरनाय फोजोबबाय",
+
+    "bilateralSymmetry": "गिबि-फिसाय समता",
+    "energyAsymmetry": "शक्ति असमता",
+    "jerkAsymmetry": "Jerk असमता",
+
+    "rightLeg": "आंजार फिसा",
+    "leftLeg": "नैथाय फिसा",
+    "bothLegs": "फिसा दुइथाय",
+
+    "startRight": "आंजार फिसाजों जागाय",
+    "startLeft": "नैथाय फिसाजों जागाय",
+    "startBoth": "फिसा दुइथायजों जागाय",
+
+    "bothLegsInfo": "फोरमायनाय समाव OrthoEdge सेंसर दुइथायखौ जोगाजोग खालाम। सेंसर दुइथाय जोगाजोग जाब्ला हाबानि स्क्रिन नुजायो।",
+
+    "simulate": "हाबानि टेस्ट सिमुलेट खालाम",
+
+    "seconds": "सेकेन्ड",
+    "windows": "विन्ड'स",
+    "healthy": "मोजां",
+    "moderate": "माझारी",
+    "atRisk": "जोंखायाव",
+
+    "iGRI": "IGRI",
+    "ml": "ML",
+    "consistency": "समानता",
+    "coordination": "सामंजस्य",
+
+    "bleUnsupported": "बे ब्राउजारआ Bluetooth समथोन खालामनाय नङा।",
+    "connectionLost": "जोगाजोग गैया। टेस्ट बन्द खालामबाय।",
+    "connectFailed": "सेंसरजों जोगाजोग खालामनो हायाखै। फिन नाजाय।",
+
+    "footer": "OrthoEdge हाबानि जांचआ सेंसर-आधारित जेंना नायबिजिरनाय बाहायो।"
+  },
+
+  "result": {
+    "title": "स्क्रिनिंग फोसाब",
+    "patientInformation": "सोरोगियारनि फोरमायथि",
+    "questionnaireResult": "सोंथिनि फारामनि फोसाब",
+    "questionnaireResponses": "सोंथिनि फारामनि फिननाय",
+    "gaitResult": "हाबानि फोसाब",
+    "combinedResult": "जथाय फोसाब",
+    "overallScore": "जोबथा स्कोर",
+    "painScore": "दुखुनि स्कोर",
+    "stiffnessScore": "खारजोंनि स्कोर",
+    "functionScore": "शारिरिक खामानि स्कोर",
+    "gaitScore": "हाबानि स्कोर",
+    "combinedScore": "जथाय स्कोर",
+    "riskLevel": "जोंखानि स्तर",
+    "description": "बिबरन",
+    "referral": "रेफारेल सिफारिस",
+    "reportTitle": "OrthoEdge स्क्रिनिंग रिपोर्ट",
+    "assessmentTitle": "Osteoarthritis जोंखा जांच",
+    "continueScreening": "स्क्रिनिंगखौ दावगाहो",
+    "patientDetails": "सोरोगियारनि बिबरन",
+    "name": "मुं",
+    "age": "बोसोर",
+    "gender": "हिन्जाव",
+    "abhaNumber": "ABHA नां",
+    "riskAssessment": "जोंखा जांच",
+    "printReport": "रिपोर्ट प्रिन्ट खालाम",
+    "goHome": "ह'मआव फिन",
+    "loading": "फोसाब लोड जाबाय...",
+    "somethingWentWrong": "मोनसे जेंना जाबाय",
+    "loadError": "स्क्रिनिंग फोसाब लोड खालामनो हायाखै।",
+    "disclaimer": "बे स्क्रिनिंग फोसाबआ सिगांनि जोंखा जांचनि थाखाय मदद खालामनो बाहायो आरो बेयो डाक्टरनि रोग फोसाबनायनि जायगा नङा।",
+    "administeredBy": "जांच खालामनाय",
+    "healthcareWorker": "स्वास्थ्य सेवा खामानि",
+    "viaPlatform": "OrthoEdge स्क्रिनिंग प्लाटफर्मजों।",
+    "continueReferral": "रेफारेलआव दावगाहो →",
+    "recommendationTitle": "सिफारिस",
+    "recommendationNone": "नियमित खामानि दावगाहो आरो समे समे नायबिजिर।",
+    "recommendationLow": "नियमित शारिरिक खामानि खालाम आरो लक्षणफोरखौ नायबिजिर।",
+    "recommendationMild": "जिबोन जाथायाव सोलायनाय लाबोनो सोंनाय खालाम आरो लक्षणफोर दावगाब्ला स्वास्थ्य सेवा खामानि सों।",
+    "recommendationModerate": "स्वास्थ्य सेवा गेजेरनि मोनसे नायबिजिरनाय लाबोनो सोंनाय खालाम।",
+    "recommendationSevere": "गुबुन जांचनि थाखाय स्वास्थ्य सेवा गेजेरआव रेफारेल खालामनाय सिफारिस खालामो।",
+    "gaitAnalysis": "हाबानि नायबिजिरनाय",
+    "rightLegIgri": "आंजार फिसानि IGRI",
+    "leftLegIgri": "नैथाय फिसानि IGRI",
+    "energyAsymmetry": "शक्ति असमता",
+    "jerkAsymmetry": "Jerk असमता"
+  },
+
+  "risk": {
+    "none": "जोंखा गैया",
+    "low": "खम जोंखा",
+    "mild": "फिसा जोंखा",
+    "moderate": "माझारी जोंखा",
+    "severe": "गोरलै जोंखा",
+    "overallAssessment": "जोबथा OA जोंखा जांच",
+    "classification": "बिभाग खालामनाय",
+    "lowRange": "खम (0–30)",
+    "mildRange": "फिसा (31–50)",
+    "moderateRange": "माझारी (51–75)",
+    "severeRange": "गोरलै (76–100)",
+    "questionnaireScore": "सोंथिनि फाराम स्कोर",
+    "womacDescription": "आंनि फोरमायथि WOMAC (दुखु, खारजों, खामानि)",
+    "gaitTestScore": "हाबानि टेस्ट स्कोर",
+    "gaitDescription": "सेंसर-आधारित हाबानि नायबिजिरनाय"
+  },
+
+  "records": {
+    "title": "सोरोगियारनि रेकर्ड",
+    "name": "मुं",
+    "age": "बोसोर",
+    "abhaNumber": "ABHA नम्बर",
+    "risk": "जोंखा",
+    "date": "सान",
+    "view": "रिपोर्ट नाय",
+    "noRecords": "जेबो सोरोगियारनि रेकर्ड मोनाखै।",
+    "loading": "स्क्रिनिंग रेकर्ड लोड जाबाय...",
+    "noScreenings": "दानोबाव जेबो स्क्रिनिंग नङा",
+    "noScreeningsDescription": "सोरोगियारनि रेकर्ड बेयाव नायनो नोंनि गिबि स्क्रिनिंग जागाय।",
+    "record": "रेकर्ड",
+    "records": "रेकर्डफोर",
+    "storedLocally": "लोकालआव सुथाबाय",
+    "unnamedPatient": "मुं गैया सोरोगियार",
+    "screeningIncomplete": "स्क्रिनिंग आबुं नङा",
+    "notProvided": "होजाखै",
+    "dateUnavailable": "सान मोनाखै",
+    "combinedRiskScore": "जथाय जोंखा स्कोर"
+  },
+
+  "screening": {
+    "title": "OA स्क्रिनिंग",
+    "patientDetails": "सोरोगियारनि बिबरन",
+    "questionnaire": "सोंथिनि फाराम",
+    "gaitTest": "हाबानि टेस्ट",
+    "result": "फोसाब"
+  },
+
+  "sync": {
+    "syncing": "सिङ्क जाबाय...",
+    "syncData": "डाटा सिङ्क खालाम",
+    "synced": "सिङ्क जाबाय",
+    "failed": "सिङ्क फेल जाबाय"
+  },
+
+  "home": {
+    "title": "OrthoEdge",
+    "subtitle": "AI-आधारित Osteoarthritis स्क्रिनिंग सिस्टेम",
+
+    "login": "ल'गिन",
+    "signUp": "साइन अप",
+
+    "heroTitle": "सिगांनि स्क्रिनिंग",
+    "heroHighlight": "Osteoarthritis जोंखानि थाखाय।",
+    "heroDescription": "सोरोगियारनि लक्षण, शारिरिक खामानि आरो हाबानि नायबिजिरनाय बाहायनानै सिगांनि Osteoarthritis जोंखानि लक्षणखौ सिनायथिनो स्वास्थ्य सेवा खामानि खामानियाफोरखौ मदद होनो साजायनाय मोनसे सरल स्क्रिनिंग प्लाटफर्म।",
+
+    "getStarted": "जागाय",
+    "alreadyAccount": "आंनि सानसे अकाउन्ट दं",
+
+    "patient": "सोरोगियार",
+    "screening": "स्क्रिनिंग",
+    "riskResult": "जोंखा फोसाब",
+
+    "screeningOverview": "स्क्रिनिंगनि सार",
+    "oaRiskAssessment": "OA जोंखा जांच",
+    "questionnaire": "सोंथिनि फाराम",
+    "symptoms": "लक्षणफोर",
+    "gaitAnalysis": "हाबानि नायबिजिरनाय",
+    "movement": "जेंना",
+    "finalAssessment": "जोबथा जांच",
+    "riskScore": "जोंखा स्कोर",
+    "lowResource": "खम सुबिदा थानाय जायगायाव सरल आरो सुलभ स्क्रिनिंगनि थाखाय साजायनाय।",
+
+    "healthcarePlatform": "स्वास्थ्य सेवा स्क्रिनिंग प्लाटफर्म",
+    "healthcareWorkerDashboard": "स्वास्थ्य सेवा खामानि डेशब'र्ड",
+    "welcomeBack": "फिन स्वागतम",
+    "dashboardDescription": "गोदान सोरोगियारनि स्क्रिनिंग जागाय एबा सिगां सुथानाय स्क्रिनिंग रेकर्डफोरखौ नायबिजिर।",
+
+    "startNewScreening": "गोदान स्क्रिनिंग जागाय",
+    "startScreeningDescription": "मोनसे सोरोगियारनि रेकर्ड साजाय आरो सोंथिनि फाराम आरो हाबानि स्क्रिनिंग फोजोब।",
+    "startScreening": "स्क्रिनिंग जागाय",
+
+    "viewAllRecords": "गासै रेकर्ड नाय",
+    "recordsDescription": "सिगां सुथानाय सोरोगियारनि स्क्रिनिंग फोसाब आरो जोंखा जांचफोर नाय।",
+    "viewRecords": "रेकर्ड नाय",
+
+    "today": "दिनै",
+    "patientsScreened": "स्क्रिनिंग खालामनाय सोरोगियार",
+    "patients": "सोरोगियार",
+    "heroSubtitle": "लक्षण स्कोर आरो हाबानि नायबिजिरनायखौ जथाय खालामनाय अफलाइन-फर्स्ट जानानि Osteoarthritis स्क्रिनिंग।",
+    "kneeAlt": "पिन्धिबायनो हानाय हाबानि सेंसर ब्रेजसोनो जानानि चित्र",
+    "screeningVolume": "स्क्रिनिंगनि गोबांथि",
+    "totalPatientsScreened": "गासै स्क्रिनिंग खालामनाय सोरोगियार",
+    "totalScreened": "गासै स्क्रिनिंग",
+    "clinicalOverview": "क्लिनिकल सार",
+    "riskStratification": "जोंखा बिभाग",
+    "recentIntakes": "सिगांनि फोरमायथि",
+    "recentIntakesSubtitle": "क्लिनिक सर्भारजों सिङ्क खालामनायनि सिगां डिभाइसआव लोकालआव सुथाबाय",
+    "metrics": "गोजौ / ओंखार / BMI",
+    "action": "खामानि",
+    "review": "नायबिजिर",
+
+    "status": "अबस्था",
+    "time": "सम",
+    "unnamed": "मुं गैया",
+    "incomplete": "आबुं नङा",
+
+    "noPatientsToday": "दिनै दानिबाव जेबो सोरोगियारनि स्क्रिनिंग खालामाखै।",
+    "viewAllCount": "गासै नाय",
+    "records": "रेकर्ड",
+
+    "offlineReady": "अफलाइन स्क्रिनिंगनि थाखाय थियार",
+    "offlineDescription": "सोरोगियारनि स्क्रिनिंग डाटा दानियाव बे डिभाइसआव अफलाइन स्ट'रेज बाहायनानै लोकालआव सुथाबाय।",
+
+    "disclaimer": "OA स्क्रिनिंगआ सिगांनि जोंखा जांचनि थाखाय मदद खालामनो बाहायो आरो बेयो डाक्टरनि रोग फोसाबनायनि जायगा नङा।"
+  },
+
+  "referral": {
+    "title": "रेफारेल",
+    "findHospital": "हस्पिताल नाय",
+    "description": "नोंनि जायगानि आधाराव नाखौ गोनां स्वास्थ्य सेवा जायगा नाय।",
+    "useLocation": "आंनि जायगा बाहाय",
+    "locationDescription": "नाखौ गोनां हस्पितालखौ आपना आपनि नायनो जायगानि अनुमोदन हो।",
+    "findUsingGPS": "GPS बाहायनानै नाय",
+    "locating": "नोंनि जायगा नायबिजिरबाय...",
+    "locationNotSupported": "बे ब्राउजारआ जायगा सेवा समथोन खालामनाय नङा।",
+    "locationFailed": "नोंनि जायगा लाबोनो हायाखै। नों गावनो जायगा सायखनो हायो।",
+    "manualSelection": "जायगा गावनो सायख",
+    "manualDescription": "जायगा सेवा मोननो हायाखैब्ला नोंनि राज्य आरो सहर सायख।",
+    "selectState": "राज्य सायख",
+    "selectCity": "सहर सायख",
+    "nearestHospital": "नाखौ गोनां हस्पिताल",
+    "continueScreening": "स्क्रिनिंग दावगाहो"
+  },
+
+  "consent": {
+    "title": "सोरोगियारनि रजामन्दि",
+    "dataCollection": "सोरोगियारखौ फोरमाय होबाय आरो Osteoarthritis स्क्रिनिंगनि थाखाय बिदिन्थि आरो स्वास्थ्य फोरमायथि जमा खालामनो रजामन्दि होबाय।",
+    "storageSync": "सोरोगियारआ बे फोरमायथिखौ बे डिभाइसआव सुथानाय आरो सुरक्षित क्लाउड डाटाबेसजों सिङ्क खालामनो रजामन्दि होबाय।"
+  }
+}

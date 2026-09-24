@@ -79,14 +79,20 @@ export default function Dashboard({
               </span>
             )}
 
-            <button
-              type="button"
-              onClick={() => changeLanguage(language === "en" ? "hi" : "en")}
-              aria-label={t("language.select")}
-              className="rounded-lg border cursor-pointer border-white/20 bg-white/10 px-3 py-1.5 text-sm font-semibold text-slate-100 transition hover:bg-white/10"
-            >
-              {language === "en" ? "हिन्दी" : "English"}
-            </button>
+<select
+  value={language}
+  onChange={(e) => changeLanguage(e.target.value)}
+  aria-label={t("language.select")}
+  className="cursor-pointer rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-semibold text-slate-100 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30 [&>option]:bg-slate-800 [&>option]:text-slate-100"
+>
+<option value="en">English</option>
+<option value="hi">हिन्दी</option>
+<option value="as">অসমীয়া</option>
+<option value="bn">বাংলা</option>
+<option value="brx">बर'</option>
+<option value="mni">মৈতৈলোন্</option>
+<option value="lus">Mizo ṭawng</option>
+</select>
 
             <button
               onClick={handleSync}

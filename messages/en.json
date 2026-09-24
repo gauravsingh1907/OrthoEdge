@@ -197,7 +197,7 @@
     "lowRange": "Low (0–30)",
     "mildRange": "Mild (31–50)",
     "moderateRange": "Moderate (51–75)",
-    "severeRange": "severe (76–100)",
+    "severeRange": "Severe (76–100)",
     "questionnaireScore": "Questionnaire score",
     "womacDescription": "Self-reported WOMAC (pain, stiffness, function)",
     "gaitTestScore": "Gait test score",

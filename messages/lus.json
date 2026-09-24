@@ -1,0 +1,334 @@
+{
+  "common": {
+    "english": "Sap ṭawng",
+    "hindi": "Hindi ṭawng",
+    "save": "Dah khawm",
+    "cancel": "Kalpban",
+    "continue": "Zui zel",
+    "back": "Hnuk lam",
+    "next": "A dawt",
+    "submit": "Pe",
+    "print": "Print chhuah",
+    "close": "Khar",
+    "loading": "Load lo mek...",
+    "yes": "Ni",
+    "no": "Ni lo"
+  },
+
+  "language": {
+    "select": "Ṭawng thlang",
+    "english": "Sap ṭawng",
+    "hindi": "Hindi ṭawng"
+  },
+
+  "patient": {
+    "title": "Damdawi enkawltu chanchin",
+    "description": "A hnuaia damdawi enkawltu chanchin te ziak rawh.",
+    "name": "Hming",
+    "namePlaceholder": "Damdawi enkawltu hming ziak rawh",
+    "age": "Kum",
+    "agePlaceholder": "Kum ziak rawh",
+    "gender": "Pa/Hmeichhia",
+    "selectGender": "Pa/Hmeichhia thlang rawh",
+    "weight": "Rita",
+    "weightPlaceholder": "entirnan: 70",
+    "height": "Sang zat",
+    "heightPlaceholder": "entirnan: 170",
+    "bmi": "BMI",
+    "abhaNumber": "ABHA Number",
+    "abhaPlaceholder": "ABHA number (digit 14)",
+    "male": "Pa",
+    "female": "Hmeichhia",
+    "other": "Dang"
+  },
+
+  "questionnaire": {
+    "title": "Zawhna Form",
+    "pain": "Natna",
+    "stiffness": "Har lam",
+    "physicalFunction": "Taksa thiltih theihna",
+    "none": "Awm lo",
+    "mild": "Tlem tê",
+    "moderate": "A zau",
+    "severe": "A na tak",
+    "extreme": "A na tak khoptawk lo",
+
+    "questions": {
+      "painWalkingFlat": "Hmun ṭha lama kal hian natna i hmuh dan chu engzat nge?",
+      "painStairs": "Kalna lakhawm chhuah/lut hian natna i hmuh dan chu engzat nge?",
+      "painNight": "Zana ihmun chunga i thlan lai hian natna i hmuh dan chu engzat nge?",
+      "painSittingLying": "I thu emaw i pah lai hian natna i hmuh dan chu engzat nge?",
+      "painStanding": "I ding lai hian natna i hmuh dan chu engzat nge?",
+      "stiffnessMorning": "Chhûng ai a har dan hi zing a thawh hunah engzat nge?",
+      "stiffnessLaterDay": "I thu emaw i chawlh hnua chhûng ai a har dan hi ni lai lo tawpah engzat nge?",
+      "functionDownStairs": "Kalna lakhawm chhuah hian harsatna i hmuh dan chu engzat nge?",
+      "functionUpStairs": "Kalna lakhawm lut hian harsatna i hmuh dan chu engzat nge?",
+      "functionRising": "I thu ata i tho leh hian harsatna i hmuh dan chu engzat nge?",
+      "functionStanding": "I ding hian harsatna i hmuh dan chu engzat nge?",
+      "functionBending": "I kun hian harsatna i hmuh dan chu engzat nge?",
+      "functionWalking": "Hmun ṭha lama kal hian harsatna i hmuh dan chu engzat nge?",
+      "functionVehicle": "Vehicle chhung lut/chhuah hian harsatna i hmuh dan chu engzat nge?",
+      "functionHeavyWork": "In hnathawh emaw lo hnathawh rit hian harsatna i hmuh dan chu engzat nge?",
+      "functionBed": "Ihmun chunga lut/chhuah hian harsatna i hmuh dan chu engzat nge?",
+      "functionSquatting": "I khu hian harsatna i hmuh dan chu engzat nge?"
+    },
+
+    "instruction": "Damdawi enkawltu dinhmun tûn lai a tluk ber chhâng chu thlang rawh."
+  },
+
+  "gait": {
+    "assessment": "Enfiahna",
+    "title": "Kalna Enfiahna",
+    "subtitle": "OrthoEdge sensor hmanga khuk chin dan leh kalna dan enfiah rawh.",
+    "assessmentProgress": "Enfiahna zawhzat",
+
+    "ready": "Kalna enfiahna tih tan tûr in fel tawh",
+    "readyDescription": "Kalna enfiahna ṭan tûr chuan OrthoEdge sensor connect rawh. Test lai chuan a ngei angin kal rawh.",
+    "sensorReminder": "Tan hmaah OrthoEdge sensor chu ṭha taka khap tawh nge tih fiah rawh.",
+
+    "deviceSetup": "Device Setup",
+    "connecting": "Sensor connect lo mek...",
+    "waitingForOtherSensor": "A tlai deuh tawh",
+    "waitingTitle": "Sensor dang chu ngah lo mek...",
+    "waitingDescription": "Sensor pakhat chu connect tawh a ni. Kalna display chhuah tûr chuan sensor dang chu connect rawh.",
+
+    "recordingInProgress": "Record lo mek",
+    "walkNormally": "A ngei angin kal rawh",
+    "bothSensorsMonitored": "Ke sensor pahnih zawng enfiah lo mek a ni.",
+
+    "completed": "Enfiahna tawp",
+    "analysisComplete": "Kalna analysis tawp",
+
+    "bilateralSymmetry": "Ke pahnih inanna",
+    "energyAsymmetry": "Thiltihtheihna inanna lohna",
+    "jerkAsymmetry": "Jerk inanna lohna",
+
+    "rightLeg": "Ke dik lam",
+    "leftLeg": "Ke vei lam",
+    "bothLegs": "Ke pahnih zawng",
+
+    "startRight": "Ke dik lam aṭanga tan",
+    "startLeft": "Ke vei lam aṭanga tan",
+    "startBoth": "Ke pahnih aṭanga tan",
+
+    "bothLegsInfo": "Hriattir a lo awm chuan OrthoEdge sensor pahnih zawng connect rawh. Sensor pahnih zawng an connect hnuah kalna screen chu a lang ang.",
+
+    "simulate": "Kalna Test Simulate",
+
+    "seconds": "second",
+    "windows": "window",
+    "healthy": "dam ṭha",
+    "moderate": "a zau",
+    "atRisk": "he hlauhawmna awm",
+
+    "iGRI": "IGRI",
+    "ml": "ML",
+    "consistency": "inrem dan",
+    "coordination": "inpumkhatna",
+
+    "bleUnsupported": "He browser hian Bluetooth a support lo.",
+    "connectionLost": "Connection a bo. Test chu a tân.",
+    "connectFailed": "Sensor connect a ni thei lo. Leh thang rawh.",
+
+    "footer": "OrthoEdge kalna enfiahna hian sensor-based thiltihdan enfiahna a hmang."
+  },
+
+  "result": {
+    "title": "Screening Chhinchhiahna",
+    "patientInformation": "Damdawi enkawltu chanchin",
+    "questionnaireResult": "Zawhna Form Chhinchhiahna",
+    "questionnaireResponses": "Zawhna Form Chhânnate",
+    "gaitResult": "Kalna Chhinchhiahna",
+    "combinedResult": "Hlauhawmna Chhinchhiahna Khawm",
+    "overallScore": "Score Zawng Zawng",
+    "painScore": "Natna Score",
+    "stiffnessScore": "Har lam Score",
+    "functionScore": "Taksa Thiltihtheihna Score",
+    "gaitScore": "Kalna Score",
+    "combinedScore": "Score Khawm",
+    "riskLevel": "Hlauhawmna Level",
+    "description": "Sawifiahna",
+    "referral": "Referral Ngenna",
+    "reportTitle": "OrthoEdge Screening Report",
+    "assessmentTitle": "Osteoarthritis Hlauhawmna Enfiahna",
+    "continueScreening": "Screening Zui zel",
+    "patientDetails": "Damdawi enkawltu Chanchin Danglam",
+    "name": "Hming",
+    "age": "Kum",
+    "gender": "Pa/Hmeichhia",
+    "abhaNumber": "ABHA No.",
+    "riskAssessment": "Hlauhawmna Enfiahna",
+    "printReport": "Report Print",
+    "goHome": "In lam kir leh",
+    "loading": "Chhinchhiahna load lo mek...",
+    "somethingWentWrong": "Engemaw a dik lo",
+    "loadError": "Screening chhinchhiahna load theih lo.",
+    "disclaimer": "He screening chhinchhiahna hi hlauhawmna hriat hmasak nan ṭanpui a ni a, doctor sawihriatna hmang aiin a hman theih lo.",
+    "administeredBy": "Tih pawimawhtu",
+    "healthcareWorker": "damdawi hna thawktu",
+    "viaPlatform": "OrthoEdge screening platform hmangin.",
+    "continueReferral": "Referral-ah zui zel →",
+    "recommendationTitle": "Ngenna",
+    "recommendationNone": "Hnathawh hun tin leh enfiahna dâm zel rawh.",
+    "recommendationLow": "Taksa hnathawh dâm zel la, natna hmuh dan enfiah reng rawh.",
+    "recommendationMild": "Nun dan danglamna ngaihtuah la, natna a la awm chuan follow-up rawh.",
+    "recommendationModerate": "Damdawi hna thawktu hriat theih tûrin en tir rawh.",
+    "recommendationSevere": "Enfiahna belh nan damdawi hna thawktu hnenah referral tih a ṭha.",
+    "gaitAnalysis": "Kalna Analysis",
+    "rightLegIgri": "Ke dik lam IGRI",
+    "leftLegIgri": "Ke vei lam IGRI",
+    "energyAsymmetry": "Thiltihtheihna inanna lohna",
+    "jerkAsymmetry": "Jerk inanna lohna"
+  },
+
+  "risk": {
+    "none": "Hlauhawmna Awm Lo",
+    "low": "Hlauhawmna Tlem",
+    "mild": "Hlauhawmna Tlem Tê",
+    "moderate": "Hlauhawmna A Zau",
+    "severe": "Hlauhawmna A Na Tak",
+    "overallAssessment": "OA Hlauhawmna Enfiahna Zawng Zawng",
+    "classification": "Hrang chhehna",
+    "lowRange": "Tlem (0–30)",
+    "mildRange": "Tlem tê (31–50)",
+    "moderateRange": "A zau (51–75)",
+    "severeRange": "A na tak (76–100)",
+    "questionnaireScore": "Zawhna Form Score",
+    "womacDescription": "Mahni theihna WOMAC (natna, har lam, thiltihtheihna)",
+    "gaitTestScore": "Kalna Test Score",
+    "gaitDescription": "Sensor-based kalna analysis"
+  },
+
+  "records": {
+    "title": "Damdawi Enkawltu Record",
+    "name": "Hming",
+    "age": "Kum",
+    "abhaNumber": "ABHA Number",
+    "risk": "Hlauhawmna",
+    "date": "Ni",
+    "view": "Report En",
+    "noRecords": "Damdawi enkawltu record awm lo.",
+    "loading": "Screening record load lo mek...",
+    "noScreenings": "Screening reng reng la awm lo",
+    "noScreeningsDescription": "Damdawi enkawltu record hi hmuh nan i screening hmasa ber tan rawh.",
+    "record": "record",
+    "records": "record te",
+    "storedLocally": "hmun-a dah khawm",
+    "unnamedPatient": "Hming Enawm Lo Damdawi Enkawltu",
+    "screeningIncomplete": "Screening A Tawp Lo",
+    "notProvided": "Pêk loh",
+    "dateUnavailable": "Ni hriat loh",
+    "combinedRiskScore": "Hlauhawmna Score Khawm"
+  },
+
+  "screening": {
+    "title": "OA Screening",
+    "patientDetails": "Damdawi Enkawltu Chanchin Danglam",
+    "questionnaire": "Zawhna Form",
+    "gaitTest": "Kalna Test",
+    "result": "Chhinchhiahna"
+  },
+
+  "sync": {
+    "syncing": "Sync lo mek...",
+    "syncData": "Data Sync",
+    "synced": "Sync tawh",
+    "failed": "Sync a ni thei lo"
+  },
+
+  "home": {
+    "title": "OrthoEdge",
+    "subtitle": "AI Ṭanpuina Osteoarthritis Screening System",
+
+    "login": "Login",
+    "signUp": "Sign Up",
+
+    "heroTitle": "Hlauhawmna hriat hmasak",
+    "heroHighlight": "osteoarthritis atân.",
+    "heroDescription": "Damdawi enkawltu natna hmuh dan, taksa thiltihtheihna, leh kalna analysis hmangin damdawi hna thawktute'n osteoarthritis hlauhawmna hmuh hmasak theih nan siam screening platform mal tak a ni.",
+
+    "getStarted": "Ṭan rawh",
+    "alreadyAccount": "Account ka nei tawh",
+
+    "patient": "Damdawi enkawltu",
+    "screening": "Screening",
+    "riskResult": "Hlauhawmna Chhinchhiahna",
+
+    "screeningOverview": "Screening Enfiahna Zawng Zawng",
+    "oaRiskAssessment": "OA Hlauhawmna Enfiahna",
+    "questionnaire": "Zawhna Form",
+    "symptoms": "Natna Hmuh Dan",
+    "gaitAnalysis": "Kalna Analysis",
+    "movement": "Insuihkhawm",
+    "finalAssessment": "Enfiahna Tawpna",
+    "riskScore": "Hlauhawmna Score",
+    "lowResource": "Hlawhtling lo hmunah hman awlsam turin siam a ni.",
+
+    "healthcarePlatform": "Damdawi Screening Platform",
+    "healthcareWorkerDashboard": "Damdawi Hna Thawktu Dashboard",
+    "welcomeBack": "Kal leh tha ka ti che",
+    "dashboardDescription": "Damdawi enkawltu screening tha ṭan emaw record dah khawm tawh en rawh.",
+
+    "startNewScreening": "Screening Tha Ṭan",
+    "startScreeningDescription": "Damdawi enkawltu record siam la, zawhna form leh kalna screening ti zo rawh.",
+    "startScreening": "Screening Ṭan",
+
+    "viewAllRecords": "Record Zawng Zawng En",
+    "recordsDescription": "Dah khawm tawh damdawi enkawltu screening chhinchhiahna leh hlauhawmna enfiahna en rawh.",
+    "viewRecords": "Record En",
+
+    "today": "Tunlai",
+    "patientsScreened": "Screening Tih Tawh Damdawi Enkawltu",
+    "patients": "damdawi enkawltu",
+    "heroSubtitle": "Offline-first khuk osteoarthritis screening, natna score leh kalna analysis inkarhkawm.",
+    "kneeAlt": "Kalna sensor brace khukah bawm dawn chhu",
+    "screeningVolume": "Screening Tam Zat",
+    "totalPatientsScreened": "Screening Tih Tawh Damdawi Enkawltu Zawng Zawng",
+    "totalScreened": "Screening Tih Tawh Zawng Zawng",
+    "clinicalOverview": "Clinical Enfiahna Zawng Zawng",
+    "riskStratification": "Hlauhawmna Hrang Chhehna",
+    "recentIntakes": "Baseline Intake Thar",
+    "recentIntakesSubtitle": "Clinic server-a sync loh hmaah device-ah hmun-a dah khawm",
+    "metrics": "Sang zat / Rita / BMI",
+    "action": "Tih Tûr",
+    "review": "En let",
+
+    "status": "Dinhmun",
+    "time": "Hun",
+    "unnamed": "Hming enawm lo",
+    "incomplete": "A tawp lo",
+
+    "noPatientsToday": "Tunlai chuan damdawi enkawltu screening reng reng a la nei lo.",
+    "viewAllCount": "Zawng zawng en",
+    "records": "record te",
+
+    "offlineReady": "Offline screening tih tan tûr in fel tawh",
+    "offlineDescription": "Damdawi enkawltu screening data hi he device-ah offline storage hmangin hmun-a dah khawm a ni.",
+
+    "disclaimer": "OA screening hi hlauhawmna hriat hmasak nan ṭanpui a ni a, doctor sawihriatna hmang aiin a hman theih lo."
+  },
+
+  "referral": {
+    "title": "Referral",
+    "findHospital": "Hospital Zawn",
+    "description": "I hmun aiawh hian hospital hnaih ber zawng rawh.",
+    "useLocation": "Ka Hmun Hmang",
+    "locationDescription": "Hospital hnaih ber automatic-a hmuh theih nan location access phal rawh.",
+    "findUsingGPS": "GPS Hmangin Zawn",
+    "locating": "I hmun zawn lo mek...",
+    "locationNotSupported": "He browser hian location service a support lo.",
+    "locationFailed": "I hmun access theih lo. I hmun chu mahni thlang thei che.",
+    "manualSelection": "Hmun Mahni Thlang",
+    "manualDescription": "Location access theih lo chuan i state leh khawpui thlang rawh.",
+    "selectState": "State Thlang",
+    "selectCity": "Khawpui Thlang",
+    "nearestHospital": "Hospital Hnaih Ber",
+    "continueScreening": "Screening Zui zel"
+  },
+
+  "consent": {
+    "title": "Damdawi Enkawltu Puhthlum",
+    "dataCollection": "Damdawi enkawltu chu hriattir a ni a, osteoarthritis screening atân a mahni chanchin leh damdawi chanchin khawm chhutna chu a puhthlum tawh.",
+    "storageSync": "Damdawi enkawltu chuan he chanchin hi device-ah dah khawm leh cloud database him takah sync tih chu a puhthlum tawh."
+  }
+}

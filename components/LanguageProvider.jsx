@@ -3,6 +3,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { translate } from "@/lib/translate";
 
+const SUPPORTED_LANGUAGES = ["en", "hi", "as", "bn", "brx", "mni", "lus"];
+
 const LanguageContext = createContext(null);
 
 export function LanguageProvider({ children }) {
@@ -11,13 +13,13 @@ export function LanguageProvider({ children }) {
   useEffect(() => {
     const savedLanguage = localStorage.getItem("orthoedge-language");
 
-    if (savedLanguage === "en" || savedLanguage === "hi") {
+    if (SUPPORTED_LANGUAGES.includes(savedLanguage)) {
       setLanguage(savedLanguage);
     }
   }, []);
 
   const changeLanguage = (newLanguage) => {
-    if (newLanguage !== "en" && newLanguage !== "hi") {
+    if (!SUPPORTED_LANGUAGES.includes(newLanguage)) {
       return;
     }
 

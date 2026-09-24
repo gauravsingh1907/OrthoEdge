@@ -30,7 +30,6 @@ export default function GaitTest({ patientId, onComplete }) {
   const [right, setRight] = useState(createLegState());
   const [left, setLeft] = useState(createLegState());
 
-
   const [testMode, setTestMode] = useState(null);
 
   const [saved, setSaved] = useState(false);
@@ -214,43 +213,43 @@ export default function GaitTest({ patientId, onComplete }) {
    * The UI will NOT show the walking screen until both
    * sensors are connected/ready.
    */
-const handleStartBoth = async () => {
-  setTestMode("both");
+  const handleStartBoth = async () => {
+    setTestMode("both");
 
-  const rightConnected = await connectLeg({
-    deviceName: RIGHT_DEVICE_NAME,
-    setLegState: setRight,
-    legRef: rightRef,
-    deviceRef: rightDeviceRef,
-    charRef: rightCharRef,
-    angleHistoryRef: rightAngleHistoryRef,
-    decoderRef: rightDecoderRef,
-  });
+    const rightConnected = await connectLeg({
+      deviceName: RIGHT_DEVICE_NAME,
+      setLegState: setRight,
+      legRef: rightRef,
+      deviceRef: rightDeviceRef,
+      charRef: rightCharRef,
+      angleHistoryRef: rightAngleHistoryRef,
+      decoderRef: rightDecoderRef,
+    });
 
-  if (!rightConnected) {
-    return;
-  }
-
-  const leftConnected = await connectLeg({
-    deviceName: LEFT_DEVICE_NAME,
-    setLegState: setLeft,
-    legRef: leftRef,
-    deviceRef: leftDeviceRef,
-    charRef: leftCharRef,
-    angleHistoryRef: leftAngleHistoryRef,
-    decoderRef: leftDecoderRef,
-  });
-
-  if (!leftConnected) {
-    if (rightDeviceRef.current?.gatt?.connected) {
-      rightDeviceRef.current.gatt.disconnect();
+    if (!rightConnected) {
+      return;
     }
 
-    setRight(createLegState());
-    setLeft(createLegState());
-    setTestMode(null);
-  }
-};
+    const leftConnected = await connectLeg({
+      deviceName: LEFT_DEVICE_NAME,
+      setLegState: setLeft,
+      legRef: leftRef,
+      deviceRef: leftDeviceRef,
+      charRef: leftCharRef,
+      angleHistoryRef: leftAngleHistoryRef,
+      decoderRef: leftDecoderRef,
+    });
+
+    if (!leftConnected) {
+      if (rightDeviceRef.current?.gatt?.connected) {
+        rightDeviceRef.current.gatt.disconnect();
+      }
+
+      setRight(createLegState());
+      setLeft(createLegState());
+      setTestMode(null);
+    }
+  };
 
   // --------------------------------------------------
   // Parse incoming BLE data
@@ -485,113 +484,95 @@ const handleStartBoth = async () => {
     overallStatus = "connecting";
   }
 
-// --------------------------------------------------
-// Asymmetry
-// --------------------------------------------------
-const bothReported = right.report && left.report;
+  // --------------------------------------------------
+  // Asymmetry
+  // --------------------------------------------------
+  const bothReported = right.report && left.report;
 
-let asymmetry = null;
+  let asymmetry = null;
 
-if (bothReported) {
-  const eL = left.report.meanEnergy;
-  const eR = right.report.meanEnergy;
-  const jL = left.report.meanJerk;
-  const jR = right.report.meanJerk;
+  if (bothReported) {
+    const eL = left.report.meanEnergy;
+    const eR = right.report.meanEnergy;
+    const jL = left.report.meanJerk;
+    const jR = right.report.meanJerk;
 
-  const hasValidEnergy =
-    Number.isFinite(eL) && Number.isFinite(eR);
+    const hasValidEnergy = Number.isFinite(eL) && Number.isFinite(eR);
 
-  const hasValidJerk =
-    Number.isFinite(jL) && Number.isFinite(jR);
+    const hasValidJerk = Number.isFinite(jL) && Number.isFinite(jR);
 
-  const bsiEnergy = hasValidEnergy
-    ? (Math.abs(eL - eR) / (0.5 * (eL + eR) || 1)) * 100
-    : null;
+    const bsiEnergy = hasValidEnergy
+      ? (Math.abs(eL - eR) / (0.5 * (eL + eR) || 1)) * 100
+      : null;
 
-  const bsiJerk = hasValidJerk
-    ? (Math.abs(jL - jR) / (0.5 * (jL + jR) || 1)) * 100
-    : null;
+    const bsiJerk = hasValidJerk
+      ? (Math.abs(jL - jR) / (0.5 * (jL + jR) || 1)) * 100
+      : null;
 
-  asymmetry = {
-    bsiEnergy,
-    bsiJerk,
-  };
-}
-// --------------------------------------------------
-// Save result
-// --------------------------------------------------
-useEffect(() => {
-  if (overallStatus !== "complete" || saved) {
-    return;
+    asymmetry = {
+      bsiEnergy,
+      bsiJerk,
+    };
   }
-
-  let timeout;
-
-  const saveResult = async () => {
-    setSaved(true);
-
-    const scores = [
-      right.report?.igri,
-      left.report?.igri,
-    ].filter(
-      (v) => typeof v === "number" && Number.isFinite(v)
-    );
-
-    const finalScore =
-      scores.length > 0
-        ? scores.reduce((a, b) => a + b, 0) / scores.length
-        : 0;
-
-    let bsiEnergy = null;
-    let bsiJerk = null;
-
-    if (right.report && left.report) {
-      const eL = left.report.meanEnergy;
-      const eR = right.report.meanEnergy;
-      const jL = left.report.meanJerk;
-      const jR = right.report.meanJerk;
-
-      if (Number.isFinite(eL) && Number.isFinite(eR)) {
-        bsiEnergy =
-          (Math.abs(eL - eR) /
-            (0.5 * (eL + eR) || 1)) *
-          100;
-      }
-
-      if (Number.isFinite(jL) && Number.isFinite(jR)) {
-        bsiJerk =
-          (Math.abs(jL - jR) /
-            (0.5 * (jL + jR) || 1)) *
-          100;
-      }
+  // --------------------------------------------------
+  // Save result
+  // --------------------------------------------------
+  useEffect(() => {
+    if (overallStatus !== "complete" || saved) {
+      return;
     }
 
-    await updatePatient(patientId, {
-      gaitScore: finalScore,
-      gaitBsiEnergy: bsiEnergy,
-      gaitBsiJerk: bsiJerk,
-      gaitRightIgri: right.report?.igri ?? null,
-      gaitLeftIgri: left.report?.igri ?? null,
-    });
+    let timeout;
 
-    timeout = setTimeout(() => {
-      onComplete();
-    }, 1000);
-  };
+    const saveResult = async () => {
+      setSaved(true);
 
-  saveResult();
+      const scores = [right.report?.igri, left.report?.igri].filter(
+        (v) => typeof v === "number" && Number.isFinite(v),
+      );
 
-  return () => {
-    if (timeout) clearTimeout(timeout);
-  };
-}, [
-  overallStatus,
-  saved,
-  patientId,
-  onComplete,
-  right.report,
-  left.report,
-]);
+      const finalScore =
+        scores.length > 0
+          ? scores.reduce((a, b) => a + b, 0) / scores.length
+          : 0;
+
+      let bsiEnergy = null;
+      let bsiJerk = null;
+
+      if (right.report && left.report) {
+        const eL = left.report.meanEnergy;
+        const eR = right.report.meanEnergy;
+        const jL = left.report.meanJerk;
+        const jR = right.report.meanJerk;
+
+        if (Number.isFinite(eL) && Number.isFinite(eR)) {
+          bsiEnergy = (Math.abs(eL - eR) / (0.5 * (eL + eR) || 1)) * 100;
+        }
+
+        if (Number.isFinite(jL) && Number.isFinite(jR)) {
+          bsiJerk = (Math.abs(jL - jR) / (0.5 * (jL + jR) || 1)) * 100;
+        }
+      }
+
+      await updatePatient(patientId, {
+        gaitScore: finalScore,
+        gaitBsiEnergy: bsiEnergy,
+        gaitBsiJerk: bsiJerk,
+        gaitRightIgri: right.report?.igri ?? null,
+        gaitLeftIgri: left.report?.igri ?? null,
+      });
+
+      timeout = setTimeout(() => {
+        onComplete();
+      }, 1000);
+    };
+
+    saveResult();
+
+    return () => {
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [overallStatus, saved, patientId, onComplete, right.report, left.report]);
   // --------------------------------------------------
   // Cleanup BLE
   // --------------------------------------------------
@@ -693,7 +674,6 @@ useEffect(() => {
     }, 1000);
   };
 
-
   const progress =
     overallStatus === "idle"
       ? 0
@@ -702,7 +682,6 @@ useEffect(() => {
         : overallStatus === "recording"
           ? 65
           : 100;
-
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6 sm:py-10">
@@ -805,14 +784,14 @@ useEffect(() => {
             </div>
 
             {/* Simulation */}
-
+{/* 
             <button
               type="button"
               onClick={handleSimulate}
               className="mt-4 w-full rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
             >
               Simulate Gait Test
-            </button>
+            </button> */}
 
             <p className="mt-3 text-center text-xs text-slate-400">
               {t("gait.sensorReminder")}
@@ -973,8 +952,6 @@ useEffect(() => {
     </div>
   );
 }
-
-
 
 function LegPanel({ title, angle, windowsProcessed, countdown }) {
   return (

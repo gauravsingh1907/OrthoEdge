@@ -46,14 +46,37 @@ export default function LandingHero() {
         </Link>
 
         <nav className="flex items-center gap-2 sm:gap-3">
-          <button
-            type="button"
-            onClick={() => changeLanguage(language === "en" ? "hi" : "en")}
-            aria-label={t("language.select")}
-            className="rounded-lg bg-white/70 px-3 py-2 text-sm font-medium text-slate-900 transition hover:bg-white min-[1032px]:bg-transparent min-[1032px]:text-slate-200 min-[1032px]:hover:bg-white/10"
-          >
-            {language === "en" ? "हिन्दी" : "English"}
-          </button>
+<div className="relative">
+  <select
+    value={language}
+    onChange={(e) => changeLanguage(e.target.value)}
+    aria-label={t("language.select")}
+    className="cursor-pointer appearance-none rounded-lg bg-white/70 py-2 pl-3 pr-8 text-sm font-medium text-slate-900 transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/40 min-[1032px]:bg-transparent min-[1032px]:text-slate-200 min-[1032px]:hover:bg-white/10 min-[1032px]:focus:ring-white/40 [&>option]:bg-white [&>option]:text-slate-900"
+  >
+    <option value="en">English</option>
+    <option value="hi">हिन्दी</option>
+    <option value="as">অসমীয়া</option>
+    <option value="bn">বাংলা</option>
+    <option value="brx">बर'</option>
+    <option value="mni">মৈতৈলোন্</option>
+    <option value="lus">Mizo ṭawng</option>
+  </select>
+
+  <svg
+    className="pointer-events-none absolute right-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-900 min-[1032px]:text-slate-200"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5 7.5L10 12.5L15 7.5"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+</div>
 
           <Link
             href="/signup"
