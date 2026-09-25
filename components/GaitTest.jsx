@@ -375,6 +375,19 @@ function ReportCard({ title, report }) {
 function KneeSvg({ angleDeg }) {
   return (
     <div className="mx-auto mt-3 max-w-45">
+      <svg viewBox="0 0 280 320" role="img" aria-label="Live knee flexion angle">
+        <line x1="20" y1="290" x2="260" y2="290" stroke="#e2e8f0" strokeWidth="1" />
+        <g>
+          <line x1="140" y1="60" x2="140" y2="170" stroke="#378ADD" strokeWidth="18" strokeLinecap="round" />
+          <circle cx="140" cy="60" r="22" fill="#378ADD" />
+        </g>
+        <g transform={`rotate(${angleDeg} 140 170)`}>
+          <line x1="140" y1="170" x2="140" y2="270" stroke="#1D9E75" strokeWidth="16" strokeLinecap="round" />
+          <ellipse cx="140" cy="270" rx="26" ry="10" fill="#1D9E75" />
+        </g>
+        <circle cx="140" cy="170" r="10" fill="#ffffff" stroke="#0C443C" strokeWidth="2" />
+      </svg>
+      <p className="mt-1 text-center text-base font-semibold text-slate-900">{Math.round(angleDeg)}°</p>
       <p className="text-xl font-bold text-blue-600">{Math.round(angleDeg)}°</p>
     </div>
   );
