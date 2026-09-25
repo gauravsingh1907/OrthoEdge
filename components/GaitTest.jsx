@@ -305,6 +305,7 @@ export default function GaitTest({ patientId, onComplete }) {
                 <p className="text-sm text-slate-500 mb-4">Sensors prepared. Instruct the patient to walk normally.</p>
                 <button onClick={handleBeginRecording} className="mx-auto rounded-xl bg-emerald-600 px-10 py-4 text-lg font-bold text-white shadow hover:bg-emerald-700">
                   ▶ START GAIT TEST
+                  
                 </button>
               </div>
             )}
