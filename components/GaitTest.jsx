@@ -5,7 +5,7 @@ import { updatePatient } from "@/lib/db";
 import { useLanguage } from "@/components/LanguageProvider";
 
 const SERVICE_UUID = "4fafc201-1fb5-459e-8fcc-c5c9c331914b";
-const CHARACTERISTIC_UUID = "beb5483e-36e1-4688-b7f5-ea07361b26a9"; // Ensure ESP32s end in 'a9'
+const CHARACTERISTIC_UUID = "beb5483e-36e1-4688-b7f5-ea07361b26a8"; // Ensure ESP32s end in 'a9'
 
 const TEST_DURATION_S = 60;
 const SMOOTH_WINDOW = 5;
@@ -305,7 +305,7 @@ export default function GaitTest({ patientId, onComplete }) {
                 <p className="text-sm text-slate-500 mb-4">Sensors prepared. Instruct the patient to walk normally.</p>
                 <button onClick={handleBeginRecording} className="mx-auto rounded-xl bg-emerald-600 px-10 py-4 text-lg font-bold text-white shadow hover:bg-emerald-700">
                   ▶ START GAIT TEST
-                  
+
                 </button>
               </div>
             )}
