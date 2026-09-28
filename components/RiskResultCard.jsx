@@ -2,24 +2,40 @@
 
 import { useLanguage } from "@/components/LanguageProvider";
 
+// Map any incoming band value (including legacy ones) to Low / Moderate / High
+const normalizeBand = (band) => {
+  if (!band) return null;
+
+  switch (band.toLowerCase()) {
+    case "low":
+      return "Low";
+    case "mild": // legacy value
+    case "moderate":
+      return "Moderate";
+    case "severe": // legacy value
+    case "high":
+      return "High";
+    default:
+      return null;
+  }
+};
+
 function RiskResultCard({ scores }) {
   const { t } = useLanguage();
 
   const marker = Math.min(Math.max(scores.combinedScore, 0), 100);
+  const band = normalizeBand(scores.band);
 
   const bandColors = {
     Low: "text-green-700",
-    Mild: "text-blue-700",
     Moderate: "text-amber-700",
-    Severe: "text-red-700",
+    High: "text-red-700",
   };
 
   const getRiskLabel = (band) => {
-    if (!band) return band;
-
-    const key = band.charAt(0).toLowerCase() + band.slice(1).toLowerCase();
-
-    return t(`risk.${key}`);
+    if (!band) return "";
+    // "Low" -> "risk.low", "Moderate" -> "risk.moderate", "High" -> "risk.high"
+    return t(`risk.${band.toLowerCase()}`);
   };
 
   return (
@@ -40,12 +56,8 @@ function RiskResultCard({ scores }) {
 
       <p className="mt-1 text-sm font-medium text-gray-500">
         {t("risk.classification")}:{" "}
-        <span
-          className={`font-bold ${
-            bandColors[scores.band] || "text-gray-900"
-          }`}
-        >
-          {getRiskLabel(scores.band)}
+        <span className={`font-bold ${bandColors[band] || "text-gray-900"}`}>
+          {getRiskLabel(band)}
         </span>
       </p>
 
@@ -53,10 +65,9 @@ function RiskResultCard({ scores }) {
       <div className="mt-5">
         <div className="relative h-3 w-full overflow-hidden rounded-full bg-gray-100">
           <div className="flex h-full w-full">
-            <div className="h-full bg-green-400" style={{ width: "30%" }} />
-            <div className="h-full bg-blue-400" style={{ width: "20%" }} />
-            <div className="h-full bg-amber-400" style={{ width: "25%" }} />
-            <div className="h-full bg-red-400" style={{ width: "25%" }} />
+            <div className="h-full bg-green-400" style={{ width: "33.33%" }} />
+            <div className="h-full bg-amber-400" style={{ width: "33.33%" }} />
+            <div className="h-full bg-red-400" style={{ width: "33.34%" }} />
           </div>
 
           <div
@@ -67,9 +78,8 @@ function RiskResultCard({ scores }) {
 
         <div className="mt-1.5 flex justify-between text-[11px] text-gray-500">
           <span>{t("risk.lowRange")}</span>
-          <span>{t("risk.mildRange")}</span>
           <span>{t("risk.moderateRange")}</span>
-          <span>{t("risk.severeRange")}</span>
+          <span>{t("risk.highRange")}</span>
         </div>
       </div>
 

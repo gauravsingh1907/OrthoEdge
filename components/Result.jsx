@@ -84,13 +84,11 @@ export default function Result({ patientId, onComplete, onContinueScreening }) {
       </div>
     );
   }
-const recommendationKey = {
-  None: "result.recommendationNone",
-  Low: "result.recommendationLow",
-  Mild: "result.recommendationMild",
-  Moderate: "result.recommendationModerate",
-  Severe: "result.recommendationSevere",
-}[result.band];
+  const recommendationKey = {
+    Low: "result.recommendationLow",
+    Moderate: "result.recommendationModerate",
+    High: "result.recommendationHigh",
+  }[result.band];
 
   return (
     <div className="mx-auto w-full max-w-2xl px-4 py-6 sm:py-8">

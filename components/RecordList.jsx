@@ -31,22 +31,21 @@ export default function RecordsList() {
     fetchRecords();
   }, []);
 
-  function getRiskStyle(band) {
-    switch (band) {
-      case "Low":
-        return "bg-green-100 text-green-700 border-green-200";
+function getRiskStyle(band) {
+  switch (band) {
+    case "Low":
+      return "bg-green-100 text-green-700 border-green-200";
 
-      case "Mild":
-      case "Moderate":
-        return "bg-amber-100 text-amber-700 border-amber-200";
+    case "Moderate":
+      return "bg-amber-100 text-amber-700 border-amber-200";
 
-      case "Severe":
-        return "bg-red-100 text-red-700 border-red-200";
+    case "High":
+      return "bg-red-100 text-red-700 border-red-200";
 
-      default:
-        return "bg-gray-100 text-gray-600 border-gray-200";
-    }
+    default:
+      return "bg-gray-100 text-gray-600 border-gray-200";
   }
+}
 
   function getRiskLabel(band) {
     if (!band) return band;

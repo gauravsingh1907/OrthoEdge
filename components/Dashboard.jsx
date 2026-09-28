@@ -17,13 +17,12 @@ export default function Dashboard({
   formatTime,
 }) {
   // ---- UI-only helpers (derived from already-loaded data) ----
-  const RISK_ROWS = [
-    { band: "Low", dot: "bg-emerald-400", bar: "bg-emerald-500", pill: "bg-emerald-100 text-emerald-800" },
-    { band: "Mild", dot: "bg-yellow-400", bar: "bg-yellow-400", pill: "bg-yellow-100 text-yellow-800" },
-    { band: "Moderate", dot: "bg-orange-400", bar: "bg-orange-500", pill: "bg-orange-100 text-orange-800" },
-    { band: "Severe", dot: "bg-red-400", bar: "bg-red-500", pill: "bg-red-100 text-red-800" },
-    { band: "incomplete", dot: "bg-slate-400", bar: "bg-slate-500", pill: "bg-slate-200 text-slate-700" },
-  ];
+const RISK_ROWS = [
+  { band: "Low", dot: "bg-emerald-400", bar: "bg-emerald-500", pill: "bg-emerald-100 text-emerald-800" },
+  { band: "Moderate", dot: "bg-orange-400", bar: "bg-orange-500", pill: "bg-orange-100 text-orange-800" },
+  { band: "High", dot: "bg-red-400", bar: "bg-red-500", pill: "bg-red-100 text-red-800" },
+  { band: "incomplete", dot: "bg-slate-400", bar: "bg-slate-500", pill: "bg-slate-200 text-slate-700" },
+];
 
   const totalAll = allPatients.length;
 

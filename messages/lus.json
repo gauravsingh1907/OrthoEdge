@@ -168,12 +168,11 @@
     "healthcareWorker": "damdawi hna thawktu",
     "viaPlatform": "OrthoEdge screening platform hmangin.",
     "continueReferral": "Referral-ah zui zel →",
-    "recommendationTitle": "Ngenna",
-    "recommendationNone": "Hnathawh hun tin leh enfiahna dâm zel rawh.",
-    "recommendationLow": "Taksa hnathawh dâm zel la, natna hmuh dan enfiah reng rawh.",
-    "recommendationMild": "Nun dan danglamna ngaihtuah la, natna a la awm chuan follow-up rawh.",
-    "recommendationModerate": "Damdawi hna thawktu hriat theih tûrin en tir rawh.",
-    "recommendationSevere": "Enfiahna belh nan damdawi hna thawktu hnenah referral tih a ṭha.",
+  
+  "recommendationTitle": "Fuhna",
+  "recommendationLow": "Taksa chhungril dinhmun ṭha taka vawng la, chhiat lanna te enfiah reng rawh.",
+  "recommendationModerate": "Nunphung tihdanglam ngaihtuah la, chhiat lanna te a la awm reng chuan dokta hnenah inen tir rawh.",
+  "recommendationHigh": "Enfiah zauh nan dokta hnenah kal tura fuhna a ni.",
     "gaitAnalysis": "Kalna Analysis",
     "rightLegIgri": "Ke dik lam IGRI",
     "leftLegIgri": "Ke vei lam IGRI",
@@ -181,23 +180,20 @@
     "jerkAsymmetry": "Jerk inanna lohna"
   },
 
-  "risk": {
-    "none": "Hlauhawmna Awm Lo",
-    "low": "Hlauhawmna Tlem",
-    "mild": "Hlauhawmna Tlem Tê",
-    "moderate": "Hlauhawmna A Zau",
-    "severe": "Hlauhawmna A Na Tak",
-    "overallAssessment": "OA Hlauhawmna Enfiahna Zawng Zawng",
-    "classification": "Hrang chhehna",
-    "lowRange": "Tlem (0–30)",
-    "mildRange": "Tlem tê (31–50)",
-    "moderateRange": "A zau (51–75)",
-    "severeRange": "A na tak (76–100)",
-    "questionnaireScore": "Zawhna Form Score",
-    "womacDescription": "Mahni theihna WOMAC (natna, har lam, thiltihtheihna)",
-    "gaitTestScore": "Kalna Test Score",
-    "gaitDescription": "Sensor-based kalna analysis"
-  },
+"risk": {
+  "low": "Hlauhawm Hniam",
+  "moderate": "Hlauhawm Laizawng",
+  "high": "Hlauhawm Sang",
+  "overallAssessment": "OA hlauhawmna chhung zawng zawng enfiahna",
+  "classification": "Then hrang na",
+  "lowRange": "Hniam (0-29)",
+  "moderateRange": "Laizawng (30-59)",
+  "highRange": "Sang (60-100)",
+  "questionnaireScore": "Zawhna chhânna score",
+  "womacDescription": "Mahnia hriat WOMAC (na, khauh, tih theihna)",
+  "gaitTestScore": "Kal dan test score",
+  "gaitDescription": "Sensor hmanga kal dan enfiahna"
+},
 
   "records": {
     "title": "Damdawi Enkawltu Record",

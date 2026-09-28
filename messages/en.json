@@ -173,12 +173,11 @@
     "viaPlatform": "via OrthoEdge screening platform.",
     "continueReferral": "Continue to Referral →",
     "recommendationTitle": "Recommendation",
-    "recommendationNone": "Continue regular activity and routine monitoring.",
-    "recommendationLow": "Maintain regular physical activity and monitor symptoms.",
-    "recommendationMild": "Consider lifestyle adjustments and follow-up if symptoms persist.",
-    "recommendationModerate": "Consider evaluation by a healthcare professional.",
+"recommendationLow": "Maintain regular physical activity and monitor symptoms.",
+"recommendationModerate": "Consider lifestyle adjustments and evaluation by a healthcare professional if symptoms persist.",
+"recommendationHigh": "Referral to a healthcare professional is recommended for further evaluation.",
 
-    "recommendationSevere": "Referral to a healthcare professional is recommended for further evaluation.",
+
     "gaitAnalysis": "Gait Analysis",
 "rightLegIgri": "Right Leg IGRI",
 "leftLegIgri": "Left Leg IGRI",
@@ -186,23 +185,20 @@
 "jerkAsymmetry": "Jerk Asymmetry"
   },
 
-  "risk": {
-    "none": "No Risk",
-    "low": "Low Risk",
-    "mild": "Mild Risk",
-    "moderate": "Moderate Risk",
-    "severe": "Severe Risk",
-    "overallAssessment": "Overall OA risk assessment",
-    "classification": "Classification",
-    "lowRange": "Low (0–30)",
-    "mildRange": "Mild (31–50)",
-    "moderateRange": "Moderate (51–75)",
-    "severeRange": "Severe (76–100)",
-    "questionnaireScore": "Questionnaire score",
-    "womacDescription": "Self-reported WOMAC (pain, stiffness, function)",
-    "gaitTestScore": "Gait test score",
-    "gaitDescription": "Sensor-based gait analysis"
-  },
+"risk": {
+  "low": "Low Risk",
+  "moderate": "Moderate Risk",
+  "high": "High Risk",
+  "overallAssessment": "Overall OA risk assessment",
+  "classification": "Classification",
+  "lowRange": "Low (0-29)",
+  "moderateRange": "Moderate (30-59)",
+  "highRange": "High (60-100)",
+  "questionnaireScore": "Questionnaire score",
+  "womacDescription": "Self-reported WOMAC (pain, stiffness, function)",
+  "gaitTestScore": "Gait test score",
+  "gaitDescription": "Sensor-based gait analysis"
+},
 
   "records": {
     "title": "Patient Records",
