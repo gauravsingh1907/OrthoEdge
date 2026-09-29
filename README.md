@@ -56,11 +56,10 @@ The resulting bands are:
 
 | Score | Band |
 | ---: | :--- |
-| 0 | None |
-| 1-29 | Low |
-| 30-49 | Mild |
-| 50-74 | Moderate |
-| 75+ | Severe |
+| 0-29 | Low |
+| 30-59 | Moderate |
+| 60-100 |High|
+
 
 The questionnaire's component scoring is implemented separately in `lib/RiskScore.js`. Changes to scoring thresholds or weights should be accompanied by focused tests and clinical review.
 
