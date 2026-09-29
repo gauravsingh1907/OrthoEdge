@@ -1,6 +1,6 @@
 # OrthoEdge
 
-OrthoEdge is a multilingual, offline-first orthopedic screening application for clinical intake teams. It guides a healthcare worker through patient registration, a WOMAC-style questionnaire, gait assessment, combined risk scoring, and referral. Records are saved locally first and can be synchronized with Supabase when connectivity is available.
+OrthoEdge is a multilingual, offline-first osteoarthritis screening application for clinical intake teams. It guides a healthcare worker through patient registration, a WOMAC-style questionnaire, gait assessment, combined risk scoring, and referral. Records are saved locally first and can be synchronized with Supabase when connectivity is available.
 
 The application is built for a signed-in clinical workflow rather than public self-service screening. Authentication is handled by Clerk, local persistence uses IndexedDB through Dexie, and the server-side sync endpoint uses Supabase.
 
@@ -11,7 +11,7 @@ The application is built for a signed-in clinical workflow rather than public se
 - Questionnaire-based WOMAC scoring for pain, stiffness, and physical function
 - Gait assessment workflow with gait metrics
 - Combined risk score using questionnaire and gait results
-- Risk bands: `None`, `Low`, `Mild`, `Moderate`, and `Severe`
+- Risk bands: `None`, `Low`, `Moderate`, and `High`
 - Offline-first storage in the browser with retryable synchronization
 - Stale-record protection during cloud synchronization
 - Patient record list and individual record views
